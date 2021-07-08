@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.shopify.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.shopify.com" crossOrigin>
+    <link rel="preconnect" href="https://fonts.shopify.com" crossOrigin>
     <link rel="preconnect" href="https://monorail-edge.shopifysvc.com">
 
     {%- if canonical_url != blank  -%}
@@ -23,17 +23,17 @@
         'challenge', // Shopify's integrated google recaptcha
         'tools/recurring' // recharge-related routes
       ]
-      
+
       var loc = window.location
       var bypass = passlist.some(function(str) {
         return loc.pathname.indexOf(str) > -1
       })
-      
+
       if (!bypass) {
         loc.host = 'YOUR_STOREFRONT_DOMAIN_NO_PROTOCOL'
       }
     </script>
-    
+
     {{content_for_header}}
   </head>
   <body>
