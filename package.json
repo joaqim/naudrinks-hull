@@ -10,7 +10,8 @@
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
     "postinstall": "cd studio && npm install",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "npx chromatic"
   },
   "sideEffects": false,
   "license": "MIT",
@@ -67,6 +68,7 @@
     "@types/react": "^17.0.0",
     "@types/shopify-buy": "^2.10.5",
     "babel-loader": "^8.2.2",
+    "chromatic": "^5.9.2",
     "postcss": "^8.2.1",
     "postcss-custom-media": "^7.0.8",
     "postcss-flexbugs-fixes": "^4.2.1",
