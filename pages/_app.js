@@ -4,8 +4,8 @@ import Head from 'next/head'
 import { ThemeProvider } from 'next-themes'
 import { LazyMotion, domAnimation, AnimatePresence } from 'framer-motion'
 
-import '../styles/tailwind.css'
-import '../styles/app.css'
+import '@styles/tailwind.css'
+import '@styles/app.css'
 
 import { SiteContextProvider } from '@lib/context'
 
