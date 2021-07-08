@@ -15,12 +15,13 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
-      "@blocks/*": ["blocks/*"],
-      "@components/*": ["components/*"],
-      "@lib/*": ["lib/*"],
-      "@modules/*": ["modules/*"],
-      "@pages/*": ["pages/*"],
-    },
+      "@blocks/*": ["src/blocks/*"],
+      "@components/*": ["src/components/*"],
+      "@lib/*": ["src/lib/*"],
+      "@modules/*": ["src/modules/*"],
+      "@styles/*": ["src/styles/*"],
+      "@pages/*": ["pages/*"]
+    }
   },
   "include": [
     "next-env.d.ts",
