@@ -1,0 +1,136 @@
+
+* Naudrinks - HULL
+   :PROPERTIES:
+   :CUSTOM_ID: naudrinks---hull
+   :END:
+[[https://img.shields.io/badge/License-MIT-yellow.svg]]
+
+** Roadmap [0/1]
+*** TODO Create a landing page in src/components [1/2]
+**** DRAFT Create a  hero component
+     :LOGBOOK:
+     CLOCK: [2021-05-03 Mon 11:20]--[2021-05-03 Mon 11:27] =>  0:07
+     :END:
+**** TODO Create a banner in stories with grid + columns
+** Getting Started
+   :PROPERTIES:
+   :CUSTOM_ID: getting-started
+   :END:
+#+begin_src shell
+  git clone https://github.com/joaqim/naudrinks-hull
+
+  cd naudrinks-hull
+  npm i
+  npm run dev
+#+end_src
+
+** Documentation
+   :PROPERTIES:
+   :CUSTOM_ID: documentation
+   :END:
+*** Components
+  :PROPERTIES:
+  :CUSTOM_ID: components
+  :END:
+Simplified Product example:
+
+components/Product/index.ts
+
+#+begin_src js
+  const product = 'title';
+  export const productQuery = `*[_type == "product" && slug.current == $slug ][0] { ${product} }`;
+  export const productAllQuery = `*[_type == "product"] { slug, ${product} }`;
+  export { Product } from './Product';
+#+end_src
+
+components/Product/Product.tsx
+
+#+begin_src js
+  import React from 'react';
+
+  export interface ProductProps {
+    product: {
+      title: string;
+    };
+  }
+
+  // Product Component
+  export const Product = ({ product }: ProductProps) => (<div>{product.title}</div>);
+#+end_src js
+
+components/Product/Product.stories.tsx
+
+#+begin_src js
+  import React from 'react';
+  import { Meta, Story } from '@storybook/react'
+  import { Product, ProductProps } from './Product'
+
+  export default {
+    title: 'Components/Product',
+    component: Product,
+  } as Meta
+
+  export const Default: Story<ProductProps> = (args) => <Product {...args} />
+  Default.args = {
+    title: 'Product Title',
+  }
+#+end_src js
+
+
+
+Usage:
+
+#+begin_src js
+  import { sanityClient, sanityStaticProps, useSanityQuery } from 'lib/sanity';
+  import { Product, productAllQuery } from 'components/Product'
+
+  export const getStaticProps = async (context) => ({
+    props: await sanityStaticProps({ context, query: productAllQuery })
+  });
+
+  // Simply creates a table of components queried from Sanity
+  export default ProductsPage = (props) => {
+    const { data, loading, error } = useSanityQuery(productAllQuery, props);
+    return (
+      <ul>
+        {data.map((product, i) => (
+          <li key={i}>
+            <Product ...product/>
+          </li>
+        ))}
+      </ul>
+    );
+  };
+#+end_src js
+
+** References
+   :PROPERTIES:
+   :CUSTOM_ID: references
+   :END:
+#+begin_src shell
+  # Run Next.js in development-mode with a local server.
+  # Visit http://localhost:3000 to see your application running.
+  npm run dev
+
+  # Run Next.js in production-mode and creates a production build.
+  npm run build
+
+  # Run Next.js in production-mode with a local server.
+  # Visit http://localhost:3000 to see your production build.
+  npm run start
+
+  # Lints all `.js` and `.jsx` files in `pages` and `src`.
+  # ESLint extends the `prettier` and `react-app` configurations.
+  npm run lint
+
+
+  # Run Storybook to view components/modules used in this application.
+  # Visit http://localhost:6006 to see the Storybook.
+  npm run storybook
+#+end_src
+
+** License
+   :PROPERTIES:
+   :CUSTOM_ID: license
+   :END:
+The =naudrinks-hull= repository is [[/LICENSE.md][MIT licensed]].
