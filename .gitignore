@@ -75,3 +75,5 @@ yarn.lock
 
 # Vercel
 .vercel
+
+bin/node_modules

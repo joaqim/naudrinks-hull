@@ -20,17 +20,10 @@
       "@lib/*": ["src/lib/*"],
       "@modules/*": ["src/modules/*"],
       "@styles/*": ["src/styles/*"],
+      "@compiled/*": ["src/compiled/*"],
       "@pages/*": ["pages/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/*.js"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.js"],
+  "exclude": ["node_modules"]
 }
