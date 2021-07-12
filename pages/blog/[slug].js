@@ -1,11 +1,11 @@
 import imageUrlBuilder from '@sanity/image-url'
 import BlockContent from '@sanity/block-content-to-react'
-import client from '../../client'
 
-import { getPosts } from '@lib/api'
+import { getPost, getAllDocSlugs } from '@lib/api'
 
 function urlFor(source) {
-  return imageUrlBuilder(client).image(source)
+  return 'https://via.placeholder.com/320x240'
+  //return imageUrlBuilder(client).image(source)
 }
 
 const PostPage = (props) => {
@@ -36,19 +36,34 @@ const PostPage = (props) => {
       <BlockContent
         blocks={body}
         imageOptions={{ w: 320, h: 240, fit: 'max' }}
-        {...client.config()}
       />
     </article>
   )
 }
 
 export async function getStaticProps({ params, preview, previewData }) {
-  const postData = await getPosts(params.slug, {
+  const postData = await getPost(params.slug, {
     active: preview,
     token: previewData?.token,
   })
 
   return { props: { data: postData } }
+}
+
+export async function getStaticPaths() {
+  const allPosts = await getAllDocSlugs('post')
+
+  return {
+    paths:
+      allPosts?.map((page) => {
+        return {
+          params: {
+            slug: page.slug,
+          },
+        }
+      }) || [],
+    fallback: false,
+  }
 }
 
 /*
