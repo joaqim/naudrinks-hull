@@ -58,6 +58,13 @@ import accordion from './objects/accordion'
 import figure from './objects/figure'
 import horizontalRule from './objects/horizontal-rule'
 
+// Posts types
+import category from './posts/category'
+import post from './posts/post'
+import author from './posts/author'
+import blockContent from './posts/blockContent'
+import blogPage from './posts/page-blog'
+
 /*  ------------------------------------------ */
 /*  Your Schema documents / modules / objects
 /*  ------------------------------------------ */
@@ -125,6 +132,13 @@ export default createSchema({
 
     accordion,
     figure,
-    horizontalRule
+    horizontalRule,
+
+    post,
+    author,
+    category,
+    blogPage,
+
+    blockContent
   ])
 })

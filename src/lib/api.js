@@ -43,6 +43,16 @@ export const ptContent = `
   }
 `
 
+const post = `
+  {
+    title,
+    "name": author->name,
+    "categories": categories[]->title,
+    "authorImage": author->image,
+    body
+  }
+`
+
 // Construct our "product" GROQ
 const product = `
   {
@@ -488,3 +498,34 @@ export async function postEmail(apiKey, data) {
 
   return post
 }
+
+export async function getPost(slug, preview) {
+  const slugs = [`/${slug}`, slug, `/${slug}/`]
+
+  const query = `
+    {
+      "post": *[_type == "post" && slug.current in ${JSON.stringify(
+        slugs
+      )}] | order(_updatedAt desc)[0]{
+        hasTransparentHeader,
+        modules[]{
+          ${modules}
+        },
+        "post": ${post},
+        seo
+      },
+      ${site}
+    }
+    `
+
+  const data = await getSanityClient(preview).fetch(query)
+
+  return data
+}
+
+// All Products
+export const allPosts = (preview) => `
+  *[_type == "post" && wasDeleted != true && isDraft != true${
+    preview?.active ? ' && _id in path("drafts.**")' : ''
+  }]${post} | order(title asc)
+`

@@ -34,6 +34,7 @@ export default {
                 to: [
                   { type: 'homePage' },
                   { type: 'shopPage' },
+                  { type: 'blogPage' },
                   { type: 'page' },
                   { type: 'collection' },
                   { type: 'product' }

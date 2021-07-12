@@ -1,0 +1,41 @@
+import Link from 'next/link'
+import { allPosts } from '@lib/api'
+
+function PostsIndex(props) {
+  const { posts = [] } = props
+  return (
+    <div>
+      <h1>Welcome to a blog!</h1>
+      {posts.map(
+        ({ _id, title = '', slug = '', _updatedAt = '' }) =>
+          slug && (
+            <li key={_id}>
+              <Link prefetch href="/post/[slug]" as={`/post/${slug.current}`}>
+                <a>{title}</a>
+              </Link>{' '}
+              ({new Date(_updatedAt).toDateString()})
+            </li>
+          )
+      )}
+    </div>
+  )
+}
+
+export async function getStaticProps({ params, preview, previewData }) {
+  const postsData = await getAllPosts(params.slug, {
+    active: preview,
+    token: previewData?.token,
+  })
+
+  return { props: { data: postsData } }
+}
+/*
+Index.getInitialProps = async () => ({
+  posts: await client.fetch(groq`
+    *[_type == "post" && publishedAt < now()]|order(publishedAt desc)
+  `),
+})
+*/
+
+export default PostsIndex
+
