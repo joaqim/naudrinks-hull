@@ -63,7 +63,7 @@ import category from './posts/category'
 import post from './posts/post'
 import author from './posts/author'
 import blockContent from './posts/blockContent'
-import postsPage from './posts/page-post'
+import blogPage from './posts/page-blog'
 
 /*  ------------------------------------------ */
 /*  Your Schema documents / modules / objects
@@ -137,7 +137,7 @@ export default createSchema({
     post,
     author,
     category,
-    postsPage,
+    blogPage,
 
     blockContent
   ])

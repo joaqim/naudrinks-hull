@@ -25,24 +25,15 @@ const Blog = ({ data }) => {
 }
 
 export async function getStaticProps({ preview, previewData }) {
-  /*
-  const pagesData = await getStaticPage(
+  const blogData = await getStaticPage(
     `
-    *[_type == "postPage"] | order(_updatedAt desc)[0]{
+    *[_type == "blogPage"] | order(_updatedAt desc)[0]{
       hasTransparentHeader,
       modules[]{
         ${modules}
       },
       "posts": ${allPosts(preview)},
       "featuredPosts": featuredPosts[]->postID,
-      seo
-    }
-  `,
-  */
-  const blogData = await getStaticPage(
-    `
-    *[_type == "blogPage"] | order(_updatedAt desc)[0]{
-      "posts": ${allPosts(preview)},
       seo
     }
   `,

@@ -188,7 +188,6 @@ export default () =>
                 ])
             )
         ),
-
       S.divider(),
       S.listItem()
         .title('Shop')
