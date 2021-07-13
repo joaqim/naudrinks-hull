@@ -1,133 +1,101 @@
-import PropTypes from 'prop-types'
-import React from 'react'
-import Fieldset from 'part:@sanity/components/fieldsets/default'
-import { setIfMissing } from 'part:@sanity/form-builder/patch-event'
-import {
-  FormBuilderInput,
-  withDocument,
-  withValuePath
-} from 'part:@sanity/form-builder'
-import fieldStyle from '@sanity/form-builder/lib/inputs/ObjectInput/styles/Field.css'
+import PropTypes from "prop-types";
+import React from "react";
+import * as PathUtils from '@sanity/util/paths'
+import { FormBuilderInput, withDocument, withValuePath } from "part:@sanity/form-builder";
 
-const isFunction = obj => !!(obj && obj.constructor && obj.call && obj.apply)
 
 /**
- *
- * condition comes from a field in the document schema
- *
- * {
- *   name: 'objectTitle',
- *   title: 'object Title'
- *   type: 'object',
- *   options: {
- *		condition: (document: obj, context: func) => bool
- *	 }
- *   fields : []
- * }
- *
+ * ConditionalField input component will wrap any regular input field configured
+ * with `options.condition` in the schema.
+ * 
+ * `option.condition` should be a function that accepts two parameters, `document`
+ * and `parent`, and returns `true` if the wrapped field should be shown.
+ * 
+ * Inspired by the following code examples:
+ *  - https://sanity-io-land.slack.com/archives/C9Z7RC3V1/p1583362492389300?thread_ts=1583335061.341000&cid=C9Z7RC3V1
+ *  - https://github.com/sanity-io/sanity-recipes/blob/master/snippets/conditionalFieldsCustomInputComponent.js
  */
 
-class ConditionalFields extends React.PureComponent {
+class ConditionalField extends React.Component {
+
+  // Declare shape of React properties
   static propTypes = {
     type: PropTypes.shape({
       title: PropTypes.string,
-      name: PropTypes.string.isRequired,
-      fields: PropTypes.array.isRequired,
       options: PropTypes.shape({
         condition: PropTypes.func.isRequired
       }).isRequired
     }).isRequired,
     level: PropTypes.number,
-    value: PropTypes.shape({
-      _type: PropTypes.string
-    }),
+    focusPath: PropTypes.array,
     onFocus: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     onBlur: PropTypes.func.isRequired
-  }
+  };
 
-  firstFieldInput = React.createRef()
+  // Reference to input element
+  _inputElement = React.createRef();
 
+  // Called by the Sanity form-builder when this input should receive focus
   focus() {
-    this.firstFieldInput.current && this.firstFieldInput.current.focus()
+    if (this._inputElement.current) {
+      this._inputElement.current.focus();
+    }
   }
 
-  getContext(level = 1) {
-    // gets value path from withValuePath HOC, and applies path to document
-    // we remove the last 𝑥 elements from the valuePath
-
-    const valuePath = this.props.getValuePath()
-    const removeItems = -Math.abs(level)
-    return valuePath.length + removeItems <= 0
-      ? this.props.document
-      : valuePath.slice(0, removeItems).reduce((context, current) => {
-          // basic string path
-          if (typeof current === 'string') {
-            return context[current] || {}
-          }
-
-          // object path with key used on arrays
-          if (
-            typeof current === 'object' &&
-            Array.isArray(context) &&
-            current._key
-          ) {
-            return (
-              context.filter(
-                item => item._key && item._key === current._key
-              )[0] || {}
-            )
-          }
-        }, this.props.document)
-  }
-
-  handleFieldChange = (field, fieldPatchEvent) => {
-    // Whenever the field input emits a patch event, we need to make sure each of the included patches
-    // are prefixed with its field name, e.g. going from:
-    // {path: [], set: <nextvalue>} to {path: [<fieldName>], set: <nextValue>}
-    // and ensure this input's value exists
-
-    const { onChange, type } = this.props
-    const event = fieldPatchEvent
-      .prefixAll(field.name)
-      .prepend(setIfMissing({ _type: type.name }))
-
-    onChange(event)
-  }
-
+  // Renders the form input if condition function returns true
   render() {
-    const { document, type, value, level, onFocus, onBlur } = this.props
-    const condition =
-      (isFunction(type.options.condition) && type.options.condition) ||
-      function() {
-        return true
-      }
-    const showFields = !!condition(document, this.getContext.bind(this))
+    const { document, getValuePath, value, level, focusPath, onFocus, onBlur, onChange } = this.props;
 
-    if (!showFields) return <></>
+    // Extract type without 'inputComponent' (self reference) to avoid infinite loop
+    const { inputComponent, ...type } = this.props.type;
 
-    return (
-      <>
-        {type.fields.map((field, i) => (
-          // Delegate to the generic FormBuilderInput. It will resolve and insert the actual input component
-          // for the given field type
-          <div className={fieldStyle.root} key={i} style={{ marginBottom: -1 }}>
-            <FormBuilderInput
-              level={level + 1}
-              ref={i === 0 ? this.firstFieldInput : null}
-              key={field.name}
-              type={field.type}
-              value={value && value[field.name]}
-              onChange={patchEvent => this.handleFieldChange(field, patchEvent)}
-              path={[field.name]}
-              onFocus={onFocus}
-              onBlur={onBlur}
-            />
-          </div>
-        ))}
-      </>
-    )
+    // Find the active field's parent object in the document  
+    const parentPath = getValuePath().slice(0, -1); // <- Remove current field from path
+    const parent = PathUtils.get(document, parentPath);
+
+    // Condition to evaluate if component should be shown, defaults to true
+    const defaultCondition = () => false;
+    const condition = (type.options && type.options.condition) || defaultCondition;
+
+    if (!condition(document, parent)) {
+
+      // Hide component
+      return null;
+
+      /**
+       *  ----------------------------------------------------------------
+       *  QUESTION
+       *  How can we also delete the field value from the stored document?
+       *  Running patch unset seems inefficient if it unsets the field
+       *  every time the Studio UI is rendered, even though the stored
+       *  document has not changed, but might be an acceptable solution.
+       *  ----------------------------------------------------------------
+       */
+
+    } else {
+
+      // Render component
+      return (
+        <div style={{ marginBottom: 20 }}>
+          <FormBuilderInput
+            level={level}
+            ref={this._inputElement}
+            type={type}
+            value={value}
+            onChange={onChange}
+            path={[]}
+            focusPath={focusPath}
+            onFocus={onFocus}
+            onBlur={onBlur}
+          />
+        </div>
+      );
+
+    }
+
   }
+
 }
 
-export default withValuePath(withDocument(ConditionalFields))
+export default withValuePath(withDocument(ConditionalField));
