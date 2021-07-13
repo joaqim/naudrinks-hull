@@ -105,6 +105,48 @@ export interface ShopPage extends SanityDocument {
 }
 
 /**
+ * Blog Page
+ *
+ *
+ */
+export interface BlogPage extends SanityDocument {
+  _type: "blogPage";
+
+  /**
+   * Overlay header with transparency? — `boolean`
+   *
+   * When toggled on, the header will appear with a transparent background over the first content module and text/logos will be white until scrolling is engaged.
+   */
+  hasTransparentHeader?: boolean;
+
+  /**
+   * Page Modules — `array`
+   *
+   *
+   */
+  modules?: Array<
+    | SanityKeyed<Grid>
+    | SanityKeyed<Hero>
+    | SanityKeyed<Marquee>
+    | SanityKeyed<DividerPhoto>
+  >;
+
+  /**
+   * Featured Posts — `array`
+   *
+   * Show these posts first, before sorting remaining products alphabetically
+   */
+  featuredPosts?: Array<SanityKeyedReference<Post>>;
+
+  /**
+   * SEO / Share Settings — `seo`
+   *
+   *
+   */
+  seo?: Seo;
+}
+
+/**
  * Error Page
  *
  *
@@ -571,7 +613,9 @@ export interface CookieSettings extends SanityDocument {
    *
    * Show a link to "Learn More" about your cookie policy.
    */
-  link?: SanityReference<HomePage | ShopPage | Page | Collection | Product>;
+  link?: SanityReference<
+    HomePage | ShopPage | BlogPage | Page | Collection | Product
+  >;
 }
 
 /**
@@ -587,7 +631,7 @@ export interface PromoSettings extends SanityDocument {
    *
    * Choose where the promo bar is displayed
    */
-  display?: " " | "all" | "home";
+  display?: " " | "all" | "blog" | "home";
 
   /**
    * Text — `string`
@@ -601,7 +645,9 @@ export interface PromoSettings extends SanityDocument {
    *
    * (optional) Select a page to link the promo banner to
    */
-  link?: SanityReference<HomePage | ShopPage | Page | Collection | Product>;
+  link?: SanityReference<
+    HomePage | ShopPage | BlogPage | Page | Collection | Product
+  >;
 }
 
 /**
@@ -852,6 +898,134 @@ export interface Redirect extends SanityDocument {
    *
    */
   isPermanent?: boolean;
+}
+
+/**
+ * Post
+ *
+ *
+ */
+export interface Post extends SanityDocument {
+  _type: "post";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Author — `reference`
+   *
+   *
+   */
+  author?: SanityReference<Author>;
+
+  /**
+   * Main image — `image`
+   *
+   *
+   */
+  mainImage?: {
+    _type: "image";
+    asset: SanityAsset;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Categories — `array`
+   *
+   *
+   */
+  categories?: Array<SanityKeyedReference<Category>>;
+
+  /**
+   * Published at — `datetime`
+   *
+   *
+   */
+  publishedAt?: string;
+
+  /**
+   * Body — `blockContent`
+   *
+   *
+   */
+  body?: BlockContent;
+}
+
+/**
+ * Author
+ *
+ *
+ */
+export interface Author extends SanityDocument {
+  _type: "author";
+
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name?: string;
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  image?: {
+    _type: "image";
+    asset: SanityAsset;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Bio — `array`
+   *
+   *
+   */
+  bio?: Array<SanityKeyed<SanityBlock>>;
+}
+
+/**
+ * Category
+ *
+ *
+ */
+export interface Category extends SanityDocument {
+  _type: "category";
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title?: string;
+
+  /**
+   * Description — `text`
+   *
+   *
+   */
+  description?: string;
 }
 
 export type Grid = {
@@ -1382,7 +1556,9 @@ export type NavPage = {
    *
    *
    */
-  page?: SanityReference<HomePage | ShopPage | Page | Collection | Product>;
+  page?: SanityReference<
+    HomePage | ShopPage | BlogPage | Page | Collection | Product
+  >;
 };
 
 export type NavLink = {
@@ -1481,9 +1657,20 @@ export type HorizontalRule = {
   horizontalRule?: string;
 };
 
+export type BlockContent = Array<
+  | SanityKeyed<SanityBlock>
+  | SanityKeyed<{
+      _type: "image";
+      asset: SanityAsset;
+      crop?: SanityImageCrop;
+      hotspot?: SanityImageHotspot;
+    }>
+>;
+
 export type Documents =
   | HomePage
   | ShopPage
+  | BlogPage
   | ErrorPage
   | Page
   | Product
@@ -1497,7 +1684,10 @@ export type Documents =
   | CartSettings
   | SeoSettings
   | Menu
-  | Redirect;
+  | Redirect
+  | Post
+  | Author
+  | Category;
 
 /**
  * This interface is a stub. It was referenced in your sanity schema but

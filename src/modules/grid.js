@@ -1,6 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 
+import PostCard from '@blocks/blog/post-card'
 import Freeform from '@blocks/freeform'
 import Accordions from '@blocks/accordions'
 import ProductCard from '@blocks/shop/product-card'
@@ -91,6 +92,9 @@ const GridBlock = ({ block }) => {
           showPrice
         />
       )
+    case 'postCard':
+      console.log({ block })
+      return <PostCard data={block} />
     default:
       return null
   }

@@ -15,7 +15,9 @@ const PostPage = ({ data }) => {
 
   return (
     <>
-      <Layout site={site}>Post</Layout>
+      <Layout site={site} page={page}>
+        Post
+      </Layout>
     </>
   )
 

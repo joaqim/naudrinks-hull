@@ -9,6 +9,9 @@ const getBlockNames = types => {
         return 'Accordions'
       case 'productCard':
         return 'Product Card'
+      case 'postCard':
+        return 'Post Card'
+
       default:
         return null
     }

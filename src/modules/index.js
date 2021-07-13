@@ -15,6 +15,7 @@ export const Module = ({
   onVariantChange,
   collectionProducts,
   featuredProducts,
+  featuredPosts, // TODO
 }) => {
   const type = module._type
 

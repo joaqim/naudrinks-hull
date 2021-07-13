@@ -294,7 +294,7 @@ export default () =>
         .icon(FiShoppingCart),
       S.divider(),
       S.listItem()
-        .title('Blog')
+        .title('Blog Page')
         .child(
           S.document()
             .title('Blog Page')
@@ -334,18 +334,22 @@ export default () =>
         ),
       S.divider(),
       S.listItem()
-        .title('Categories')
-        .child(S.documentTypeList('category')),
-      S.listItem()
-        .title('Authors')
+        .title('Blog')
+        .id('blog')
+        .icon(FiPaperclip)
         .child(
-          S.documentTypeList('author')
-        ) /*
-                .child
-                  documentId =>
-                    S.document()
-                      .documentId(documentId)
-                      .schemaType('post')
+          S.list()
+            .title('Blog')
+            .items([
+              S.listItem()
+                .title('Blog Page')
+                .icon(FiCamera)
+                .child(
+                  S.document()
+                    .title('Blog Page')
+                    .id('blogPage')
+                    .documentId('blogPage')
+                    .schemaType('blogPage')
                     .views([
                       S.view.form().icon(EditIcon),
                       S.view
@@ -354,33 +358,10 @@ export default () =>
                         .icon(EyeIcon)
                         .title('SEO Preview')
                     ])
-                    */, // This returns an array of all the document types // defined in schema.js. We filter out those that we have // defined the structure above
-      ,
-      /*
                 ),
               S.listItem()
                 .title('Posts')
-                .child(S.documentTypeList('post')),
-  */ /*
-              S.listItem()
-                .title('Categories')
-                .child(S.documentTypeList('category')),
-              S.listItem()
-                .title('Authors')
-                .child(S.documentTypeList('author'))
-            ])
-        ),
-  */ /*
-      S.listItem()
-        .title('Blog')
-        .id('blog')
-        .child(
-          S.list()
-            .title('Blog')
-            .items([
-              S.listItem()
-                .title('Posts')
-                .icon(FiPaperclip)
+                .schemaType('post')
                 .child(
                   S.documentTypeList('post')
                     .title('Posts')
@@ -397,32 +378,15 @@ export default () =>
                             .title('SEO Preview')
                         ])
                     )
-                )
-            ])
-        )
-        .child(
-          S.list()
-            .title('Blog')
-            .items([
+                ),
               S.listItem()
-                .title('Blog Page')
-                .icon(FiFolder)
-                .child(
-                  S.editor()
-                    .title('Blog Page')
-                    .id('blogPage')
-                    .schemaType('blogPage')
-                    .documentId('blogPage')
-                  /*
-                    .views([
-                      S.view.form().icon(EditIcon),
-                      S.view
-                        .component(SeoPreview)
-                        .options({ previewURL })
-                        .icon(EyeIcon)
-                        .title('SEO Preview')
-                    ])
-                    */ ...S.documentTypeListItems().filter(
-        hiddenDocTypes
-      )
+                .title('Categories')
+                .child(S.documentTypeList('category')),
+              S.listItem()
+                .title('Authors')
+                .child(S.documentTypeList('author'))
+            ])
+        ),
+
+      ...S.documentTypeListItems().filter(hiddenDocTypes)
     ])

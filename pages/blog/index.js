@@ -10,15 +10,14 @@ const Blog = ({ data }) => {
 
   console.log({ data })
   return (
-    <Layout site={site}>
-      {/*page.modules?.map((module, key) => (
-      <Module
-        key={key}
-        module={module}
-          collectionProducts={page.products}
-          featuredProducts={page.featuredProducts}
-      />
-  ))*/}
+    <Layout site={site} page={page}>
+      {page.modules?.map((module, key) => (
+        <Module key={key} module={module} featuredPosts={page.featuredPosts} />
+      ))}
+
+      {page.posts.map((post, key) => (
+        <div key={key}>{post.title}</div>
+      ))}
     </Layout>
   )
 }
