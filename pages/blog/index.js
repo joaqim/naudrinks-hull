@@ -8,18 +8,17 @@ import { Module } from '@modules/index'
 const Blog = ({ data }) => {
   const { site, page } = data
 
-  console.log(data)
-  return <Layout site={site}>PAGES</Layout>
+  console.log({ data })
   return (
-    <Layout site={site} page={page}>
-      {page.modules?.map((module, key) => (
-        <Module
-          key={key}
-          module={module}
-          /*collectionPosts={page.products}*/
-          featuredPosts={page.featuredPosts}
-        />
-      ))}
+    <Layout site={site}>
+      {/*page.modules?.map((module, key) => (
+      <Module
+        key={key}
+        module={module}
+          collectionProducts={page.products}
+          featuredProducts={page.featuredProducts}
+      />
+  ))*/}
     </Layout>
   )
 }
@@ -33,7 +32,7 @@ export async function getStaticProps({ preview, previewData }) {
         ${modules}
       },
       "posts": ${allPosts(preview)},
-      "featuredPosts": featuredPosts[]->postID,
+      "featuredProducts": featuredProducts[]->productID,
       seo
     }
   `,

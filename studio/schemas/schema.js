@@ -4,6 +4,7 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 // Document types
 import homePage from './documents/page-home'
 import shopPage from './documents/page-shop'
+import blogPage from './documents/page-blog'
 import errorPage from './documents/page-error'
 import page from './documents/page'
 import product from './documents/shopify-product'
@@ -63,7 +64,6 @@ import category from './posts/category'
 import post from './posts/post'
 import author from './posts/author'
 import blockContent from './posts/blockContent'
-import blogPage from './posts/page-blog'
 
 /*  ------------------------------------------ */
 /*  Your Schema documents / modules / objects
@@ -77,6 +77,7 @@ export default createSchema({
     /* 1: Document types */
     homePage,
     shopPage,
+    blogPage,
     errorPage,
     page,
     product,
@@ -137,7 +138,6 @@ export default createSchema({
     post,
     author,
     category,
-    blogPage,
 
     blockContent
   ])

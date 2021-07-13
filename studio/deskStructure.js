@@ -16,7 +16,10 @@ import {
   FiGift,
   FiCopy,
   FiTag,
-  FiCheckSquare
+  FiCheckSquare,
+  FiFolder,
+  FiPaperclip,
+  FiCamera
 } from 'react-icons/fi'
 
 import SeoPreview from './components/previews/seo/seo-preview'
@@ -287,20 +290,57 @@ export default () =>
       S.divider(),
       S.listItem()
         .title('Blog')
-        .id('blog')
         .child(
-          S.list()
-            .title('Blog')
-            .items([
-              S.listItem()
-                .title('Blog Settings')
-                .icon(FiSettings)
-                .child(
-                  S.editor()
-                    .title('Blog Page')
-                    .id('blogPage')
-                    .schemaType('blogPage')
-                    .documentId('blogPage')
+          S.document()
+            .title('Blog Page')
+            .id('blogPage')
+            .documentId('blogPage')
+            .schemaType('blogPage')
+            .views([
+              S.view.form().icon(EditIcon),
+              S.view
+                .component(SeoPreview)
+                .options({ previewURL })
+                .icon(EyeIcon)
+                .title('SEO Preview')
+            ])
+        )
+        .icon(FiCamera),
+      S.divider(),
+      S.listItem()
+        .title('Posts')
+        .schemaType('post')
+        .child(
+          S.documentTypeList('post')
+            .title('Posts')
+            .child(documentId =>
+              S.document()
+                .documentId(documentId)
+                .schemaType('post')
+                .views([
+                  S.view.form().icon(EditIcon),
+                  S.view
+                    .component(SeoPreview)
+                    .options({ previewURL })
+                    .icon(EyeIcon)
+                    .title('SEO Preview')
+                ])
+            )
+        ),
+      S.divider(),
+      S.listItem()
+        .title('Categories')
+        .child(S.documentTypeList('category')),
+      S.listItem()
+        .title('Authors')
+        .child(
+          S.documentTypeList('author')
+        ) /*
+                .child
+                  documentId =>
+                    S.document()
+                      .documentId(documentId)
+                      .schemaType('post')
                     .views([
                       S.view.form().icon(EditIcon),
                       S.view
@@ -309,10 +349,14 @@ export default () =>
                         .icon(EyeIcon)
                         .title('SEO Preview')
                     ])
+                    */, // This returns an array of all the document types // defined in schema.js. We filter out those that we have // defined the structure above
+      ,
+      /*
                 ),
               S.listItem()
                 .title('Posts')
                 .child(S.documentTypeList('post')),
+  */ /*
               S.listItem()
                 .title('Categories')
                 .child(S.documentTypeList('category')),
@@ -321,8 +365,59 @@ export default () =>
                 .child(S.documentTypeList('author'))
             ])
         ),
-      // This returns an array of all the document types
-      // defined in schema.js. We filter out those that we have
-      // defined the structure above
-      ...S.documentTypeListItems().filter(hiddenDocTypes)
+  */ /*
+      S.listItem()
+        .title('Blog')
+        .id('blog')
+        .child(
+          S.list()
+            .title('Blog')
+            .items([
+              S.listItem()
+                .title('Posts')
+                .icon(FiPaperclip)
+                .child(
+                  S.documentTypeList('post')
+                    .title('Posts')
+                    .child(documentId =>
+                      S.document()
+                        .documentId(documentId)
+                        .schemaType('post')
+                        .views([
+                          S.view.form().icon(EditIcon),
+                          S.view
+                            .component(SeoPreview)
+                            .options({ previewURL })
+                            .icon(EyeIcon)
+                            .title('SEO Preview')
+                        ])
+                    )
+                )
+            ])
+        )
+        .child(
+          S.list()
+            .title('Blog')
+            .items([
+              S.listItem()
+                .title('Blog Page')
+                .icon(FiFolder)
+                .child(
+                  S.editor()
+                    .title('Blog Page')
+                    .id('blogPage')
+                    .schemaType('blogPage')
+                    .documentId('blogPage')
+                  /*
+                    .views([
+                      S.view.form().icon(EditIcon),
+                      S.view
+                        .component(SeoPreview)
+                        .options({ previewURL })
+                        .icon(EyeIcon)
+                        .title('SEO Preview')
+                    ])
+                    */ ...S.documentTypeListItems().filter(
+        hiddenDocTypes
+      )
     ])

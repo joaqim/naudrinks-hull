@@ -17,6 +17,8 @@ export const getStaticRoute = (name) => {
       return ''
     case 'shopPage':
       return 'shop'
+    case 'blogPage':
+      return 'blog'
     default:
       return false
   }
@@ -28,6 +30,8 @@ export const getDynamicRoute = (name) => {
       return 'shop'
     case 'product':
       return 'products'
+    case 'post':
+      return 'posts'
     default:
       return false
   }

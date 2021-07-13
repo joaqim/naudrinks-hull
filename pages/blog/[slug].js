@@ -2,13 +2,23 @@ import imageUrlBuilder from '@sanity/image-url'
 import BlockContent from '@sanity/block-content-to-react'
 
 import { getPost, getAllDocSlugs } from '@lib/api'
+import Layout from '@components/layout'
 
 function urlFor(source) {
   return 'https://via.placeholder.com/320x240'
   //return imageUrlBuilder(client).image(source)
 }
 
-const PostPage = (props) => {
+const PostPage = ({ data }) => {
+  const { site, page } = data
+  console.log({ page })
+
+  return (
+    <>
+      <Layout site={site}>Post</Layout>
+    </>
+  )
+
   const {
     title = 'Missing title',
     name = 'Missing name',

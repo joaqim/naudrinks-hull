@@ -523,7 +523,7 @@ export async function getPost(slug, preview) {
   return data
 }
 
-// All Products
+// All Posts
 export const allPosts = (preview) => `
   *[_type == "post" && wasDeleted != true && isDraft != true${
     preview?.active ? ' && _id in path("drafts.**")' : ''

@@ -6,8 +6,7 @@
   "author": "Nick DiMatteo <hello@nickdimatteo.com>",
   "scripts": {
     "build": "sanity build",
-    "dev": "sanity start",
-    "test": "sanity check"
+    "dev": "sanity start"
   },
   "dependencies": {
     "@sanity/base": "^2.10.2",
