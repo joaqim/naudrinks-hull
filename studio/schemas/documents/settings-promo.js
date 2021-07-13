@@ -12,6 +12,7 @@ export default {
         list: [
           { title: 'Never', value: ' ' },
           { title: 'All Pages', value: 'all' },
+          { title: 'Blog page', value: 'blog' },
           { title: 'Home Page only', value: 'home' }
         ]
       },
