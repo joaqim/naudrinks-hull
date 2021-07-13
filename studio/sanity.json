@@ -19,11 +19,14 @@
     "dashboard-widget-document-list",
     "media-library",
     "vercel-deploy",
-    "note-field"
+    "note-field",
+    "intl-input"
   ],
   "env": {
     "development": {
-      "plugins": ["@sanity/vision"]
+      "plugins": [
+        "@sanity/vision"
+      ]
     }
   },
   "parts": [
