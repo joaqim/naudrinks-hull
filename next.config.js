@@ -60,4 +60,15 @@ module.exports = withBundleAnalyzer({
     const sanityRedirects = await fetchSanityRedirects()
     return sanityRedirects
   },
+  webpack(_config, { webpack }) {
+    // Result HMR Warnings
+    // See: https://github.com/vercel/next.js/issues/19865#issuecomment-810738415
+    const major = webpack.version.split('.')[0]
+
+    if (major === '5') {
+      _config.output.hotUpdateMainFilename =
+        'static/webpack/[fullhash].[runtime].hot-update.json'
+    }
+    return _config
+  },
 })
