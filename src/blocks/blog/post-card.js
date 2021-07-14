@@ -18,27 +18,24 @@ const PostCard = ({ post }) => {
       <div className="flex flex-col justify-between m-2 md:m-6">
       */
   return (
-    <div className="flex flex-col max-w-md m-0 my-4 bg-white bg-gray-800 rounded-lg shadow-lg md:m-4 full transition-all duration-150 hover:shadow-2xl">
+    <div className="post-card">
       <img
         className="rounded-lg rounded-b-none"
         src="https://via.placeholder.com/1024x682"
         alt="thumbnail"
         loading="lazy"
       />
-      <div className="flex justify-between px-4 -mt-4">
+      <div className="post-card--categories">
         {categories ? (
           categories.map((category, key) => (
-            <span
-              key={key}
-              className="inline-block ring-4 bg-red-500 ring-gray-800 rounded-full text-sm font-medium tracking-wide text-gray-100 px-3 pt-0.5"
-            >
+            <span key={key} className="post-card--category">
               {category}
             </span>
           ))
         ) : (
           <span />
         )}
-        <span className="flex items-center px-2 py-1 text-xs font-medium text-gray-400 bg-gray-800 rounded-full h-min space-x-1">
+        <span className="post-card--pills">
           {/* Clock Icon SVG */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -54,22 +51,19 @@ const PostCard = ({ post }) => {
               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <p className="text-xs font-semibold text-blue-500">6 Mins</p>
+          <p className="">6 Mins</p>
         </span>
       </div>
       <div className="px-4 py-2">
-        <h1 className="text-xl font-medium tracking-wide text-gray-300 cursor-pointer leading-6 hover:text-blue-500">
+        <h1 className="post-card--title">
           <a href="blog/detail">{title}</a>
         </h1>
       </div>
       <div className="px-4 space-y-2">
-        <p className="font-normal tracking-wide text-gray-400 leading-5">
+        <p className="post-card--description">
           {description ? description : null}
         </p>
-        <router-link
-          to="blog/detail"
-          className="font-bold text-gray-100 hover:text-blue-400"
-        >
+        <router-link to="blog/detail" className="post-card--link">
           read more...
         </router-link>
       </div>

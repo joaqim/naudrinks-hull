@@ -48,6 +48,7 @@ module.exports = {
 
         /^max-w-/,
         /^text-/,
+        /^rounded-/,
       ],
     },
   },
