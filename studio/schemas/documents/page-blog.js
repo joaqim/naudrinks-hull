@@ -26,7 +26,7 @@ export default {
       title: 'Featured Posts',
       name: 'featuredPosts',
       description:
-        'Show these posts first, before sorting remaining products alphabetically ', //TODO: Sort by date
+        'Show these posts first, before sorting remaining posts by date ', //TODO: Sort by date
       type: 'array',
       of: [
         {

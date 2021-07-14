@@ -75,7 +75,24 @@ export default {
     {
       name: 'publishedAt',
       title: 'Published at',
-      type: 'datetime'
+      type: 'datetime',
+      options: {
+        dateFormat: 'YYYY-MM-DD',
+        timeFormat: 'HH:mm',
+        timeStep: 15,
+        calendarTodayLabel: 'Today'
+      }
+    },
+    {
+      name: 'description',
+      title: 'Description',
+      type: 'string',
+
+      options: {
+        source: 'description',
+        maxLength: 200,
+        validation: Rule => Rule.required()
+      }
     },
     {
       name: 'body',

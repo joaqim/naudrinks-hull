@@ -49,7 +49,10 @@ const post = `
     "name": author->name,
     "categories": categories[]->title,
     "authorImage": author->image,
-    body
+    "description": description,
+    body,
+    "date": publishedAt,
+    "image": mainImage
   }
 `
 
