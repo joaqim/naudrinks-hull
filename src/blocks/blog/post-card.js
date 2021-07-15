@@ -1,6 +1,7 @@
 import React from 'react'
 import Photo from '@components/photo'
 import { imageBuilder } from '@lib/sanity'
+import Link from 'next/link'
 
 const PostCard = ({ post }) => {
   console.log({ ...post })
@@ -12,6 +13,7 @@ const PostCard = ({ post }) => {
     name,
     title,
     date,
+    slug,
     image,
   } = post
   /*
@@ -21,20 +23,26 @@ const PostCard = ({ post }) => {
     <div className="post-card">
       <img
         className="rounded-lg rounded-b-none"
-        src="https://via.placeholder.com/1024x682"
+        src={
+          image
+            ? imageBuilder.image(image)
+            : `https://via.placeholder.com/1024x682`
+        }
         alt="thumbnail"
         loading="lazy"
       />
       <div className="post-card--categories">
-        {categories ? (
-          categories.map((category, key) => (
-            <span key={key} className="post-card--category">
-              {category}
-            </span>
-          ))
-        ) : (
-          <span />
-        )}
+        <>
+          {categories.map((category, key) =>
+            category ? (
+              <span key={key} className="post-card--category">
+                {category}
+              </span>
+            ) : (
+              <span key={key} />
+            )
+          )}
+        </>
         <span className="post-card--pills">
           {/* Clock Icon SVG */}
           <svg
@@ -56,7 +64,7 @@ const PostCard = ({ post }) => {
       </div>
       <div className="px-4 py-2">
         <h1 className="post-card--title">
-          <a href="blog/detail">{title}</a>
+          <Link href={`blog/${slug.current}`}>{title}</Link>
         </h1>
       </div>
       <div className="post-card--description">
