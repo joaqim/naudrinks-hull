@@ -61,6 +61,9 @@ module.exports = {
       white: '#FFFFFF',
       pageBG: 'var(--pageBG)',
       pageText: 'var(--pageText)',
+      lightGray: '#E5E7EB',
+      lightGrayAlt: '##D1D5DB',
+      darkGray: '#374151',
     },
     screens: {
       xs: '480px',

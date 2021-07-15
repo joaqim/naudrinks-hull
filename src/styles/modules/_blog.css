@@ -25,14 +25,51 @@
   }
 
   &--description {
-    @apply font-normal tracking-wide leading-5;
+    @apply px-4 space-y-2;
+    p {
+      @apply font-normal tracking-wide leading-5;
+    }
 
   }
 
   &--link {
     @apply font-bold;
   }
+  &--bottom {
+    @apply flex flex-row items-end w-full h-full px-4 mt-4;
 
+    &--content {
+      @apply flex items-center flex-shrink-0 px-2;
+    }
 
-
+    &--likes {
+      @apply flex items-center text-pageText space-x-1;
+    }
+  }
 }
+
+.author {
+
+    &--content {
+      @apply flex w-full py-4 border-t border-darkGray;
+    }
+
+    &--image {
+      @apply flex items-center w-full border-r border-darkGray space-x-3;
+
+      img {
+        @apply object-cover w-8 h-8 border-2 border-white rounded-full;
+      }
+
+    }
+
+    &--name {
+      @apply text-sm font-semibold tracking-wide text-lightGray;
+    }
+
+    &--date {
+      @apply text-xs font-light tracking-wider text-lightGrayAlt;
+    }
+  }
+
+

@@ -59,35 +59,31 @@ const PostCard = ({ post }) => {
           <a href="blog/detail">{title}</a>
         </h1>
       </div>
-      <div className="px-4 space-y-2">
-        <p className="post-card--description">
-          {description ? description : null}
-        </p>
+      <div className="post-card--description">
+        <p className="">{description ? description : null}</p>
         <router-link to="blog/detail" className="post-card--link">
           read more...
         </router-link>
       </div>
-      <div className="flex flex-row items-end w-full h-full px-4 mt-4">
-        <div className="flex w-full py-4 border-t border-gray-700">
-          <div className="flex items-center w-full border-r border-gray-700 space-x-3">
+      <div className="post-card--bottom">
+        <div className="author--content">
+          <div className="author--image">
             <img
-              className="object-cover w-8 h-8 border-2 border-white rounded-full"
+              className=""
               src={imageBuilder.image(authorImage)}
               alt="profile users"
               loading="lazy"
             />
             <div className="">
-              <p className="text-sm font-semibold tracking-wide text-gray-200">
-                {name}
-              </p>
-              <p className="text-xs font-light tracking-wider text-gray-300">
+              <p className="">{name}</p>
+              <p className="">
                 {/* 2 hours ago*/}
                 {date}
               </p>
             </div>
           </div>
-          <div className="flex items-center flex-shrink-0 px-2">
-            <div className="flex items-center text-gray-400 space-x-1">
+          <div className="post-card--bottom--content">
+            <div className="post-card--bottom--likes">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-5 h-5"
