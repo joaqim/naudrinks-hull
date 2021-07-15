@@ -7,7 +7,6 @@
 @import "base/_forms";
 @import "base/_labels";
 @import "base/_media";
-@import "base/_page";
 
 @import "components/_accordions";
 @import "components/_carousels";
@@ -29,6 +28,7 @@
 @import "modules/_collection";
 @import "modules/_product";
 @import "modules/_theme-switch";
+@import "modules/_blog";
 
 @import "_shame";
 

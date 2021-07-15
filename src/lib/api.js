@@ -46,6 +46,7 @@ export const ptContent = `
 const post = `
   {
     title,
+    slug,
     "name": author->name,
     "categories": categories[]->title,
     "authorImage": author->image,

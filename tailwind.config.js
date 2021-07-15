@@ -48,6 +48,7 @@ module.exports = {
 
         /^max-w-/,
         /^text-/,
+        /^rounded-/,
       ],
     },
   },
@@ -58,8 +59,13 @@ module.exports = {
       current: 'currentColor',
       black: '#000000',
       white: '#FFFFFF',
+      gray: '#E5E7EB',
+      blue: '#3434ff',
       pageBG: 'var(--pageBG)',
       pageText: 'var(--pageText)',
+      lightGray: '#E5E7EB',
+      lightGrayAlt: '##D1D5DB',
+      darkGray: '#374151',
     },
     screens: {
       xs: '480px',

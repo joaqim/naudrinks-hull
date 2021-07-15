@@ -1,6 +1,7 @@
 import React from 'react'
 import Photo from '@components/photo'
 import { imageBuilder } from '@lib/sanity'
+import Link from 'next/link'
 
 const PostCard = ({ post }) => {
   console.log({ ...post })
@@ -12,33 +13,37 @@ const PostCard = ({ post }) => {
     name,
     title,
     date,
+    slug,
     image,
   } = post
   /*
       <div className="flex flex-col justify-between m-2 md:m-6">
       */
   return (
-    <div className="flex flex-col max-w-md m-0 my-4 bg-white bg-gray-800 rounded-lg shadow-lg md:m-4 full transition-all duration-150 hover:shadow-2xl">
+    <div className="post-card">
       <img
         className="rounded-lg rounded-b-none"
-        src="https://via.placeholder.com/1024x682"
+        src={
+          image
+            ? imageBuilder.image(image)
+            : `https://via.placeholder.com/1024x682`
+        }
         alt="thumbnail"
         loading="lazy"
       />
-      <div className="flex justify-between px-4 -mt-4">
-        {categories ? (
-          categories.map((category, key) => (
-            <span
-              key={key}
-              className="inline-block ring-4 bg-red-500 ring-gray-800 rounded-full text-sm font-medium tracking-wide text-gray-100 px-3 pt-0.5"
-            >
-              {category}
-            </span>
-          ))
-        ) : (
-          <span />
-        )}
-        <span className="flex items-center px-2 py-1 text-xs font-medium text-gray-400 bg-gray-800 rounded-full h-min space-x-1">
+      <div className="post-card--categories">
+        <>
+          {categories.map((category, key) =>
+            category ? (
+              <span key={key} className="post-card--category">
+                {category}
+              </span>
+            ) : (
+              <span key={key} />
+            )
+          )}
+        </>
+        <span className="post-card--pills">
           {/* Clock Icon SVG */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -54,46 +59,39 @@ const PostCard = ({ post }) => {
               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <p className="text-xs font-semibold text-blue-500">6 Mins</p>
+          <p className="">6 Mins</p>
         </span>
       </div>
       <div className="px-4 py-2">
-        <h1 className="text-xl font-medium tracking-wide text-gray-300 cursor-pointer leading-6 hover:text-blue-500">
-          <a href="blog/detail">{title}</a>
+        <h1 className="post-card--title">
+          <Link href={`blog/${slug.current}`}>{title}</Link>
         </h1>
       </div>
-      <div className="px-4 space-y-2">
-        <p className="font-normal tracking-wide text-gray-400 leading-5">
-          {description ? description : null}
-        </p>
-        <router-link
-          to="blog/detail"
-          className="font-bold text-gray-100 hover:text-blue-400"
-        >
+      <div className="post-card--description">
+        <p className="">{description ? description : null}</p>
+        <router-link to="blog/detail" className="post-card--link">
           read more...
         </router-link>
       </div>
-      <div className="flex flex-row items-end w-full h-full px-4 mt-4">
-        <div className="flex w-full py-4 border-t border-gray-700">
-          <div className="flex items-center w-full border-r border-gray-700 space-x-3">
+      <div className="post-card--bottom">
+        <div className="author--content">
+          <div className="author--image">
             <img
-              className="object-cover w-8 h-8 border-2 border-white rounded-full"
+              className=""
               src={imageBuilder.image(authorImage)}
               alt="profile users"
               loading="lazy"
             />
             <div className="">
-              <p className="text-sm font-semibold tracking-wide text-gray-200">
-                {name}
-              </p>
-              <p className="text-xs font-light tracking-wider text-gray-300">
+              <p className="">{name}</p>
+              <p className="">
                 {/* 2 hours ago*/}
                 {date}
               </p>
             </div>
           </div>
-          <div className="flex items-center flex-shrink-0 px-2">
-            <div className="flex items-center text-gray-400 space-x-1">
+          <div className="post-card--bottom--content">
+            <div className="post-card--bottom--likes">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-5 h-5"
