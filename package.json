@@ -3,16 +3,16 @@
   "version": "2.0.2",
   "scripts": {
     "dev": "cross-env NODE_ENV=development next dev",
-    "build": "npm run build:studio && npm run build:web",
+    "build": "npm run build:studio && npm run build:web && npm run build:sb",
     "build:web": "next build",
     "build:studio": "echo 'Building Sanity to public/studio…' && cd studio && npx sanity build ../public/studio -y",
+    "build:sb": "build-storybook -o ./public/storybook",
     "start": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "analyze:server": "cross-env BUNDLE_ANALYZE=server next build",
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
     "postinstall": "cd studio && npm install",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
     "chromatic": "npx chromatic"
   },
   "sideEffects": false,
@@ -82,6 +82,7 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.3.2",
     "sanity-codegen": "^0.9.3",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "^4.3.5"
   },
   "peerDependencies": {

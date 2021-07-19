@@ -2,6 +2,7 @@ import React from 'react'
 import PostCard from './post-card'
 
 const PostGrid = ({ posts }) => {
+  console.log({ posts })
   /*className="flex flex-col justify-between w-full px-2 py-4 m-2 lg:flex-row md:px-4 md:py-6 transition-all duration-150 md:w-full lg:w-1/3"*/
   return (
     <section className="section">
