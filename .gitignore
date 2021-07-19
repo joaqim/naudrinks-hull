@@ -77,3 +77,6 @@ yarn.lock
 .vercel
 
 bin/node_modules
+
+# storybook
+public/storybook

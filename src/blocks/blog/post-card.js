@@ -33,14 +33,14 @@ const PostCard = ({ post }) => {
       />
       <div className="post-card--categories">
         <>
-          {categories.map((category, key) =>
-            category ? (
+          {categories ? (
+            categories.map((category, key) => (
               <span key={key} className="post-card--category">
                 {category}
               </span>
-            ) : (
-              <span key={key} />
-            )
+            ))
+          ) : (
+            <span />
           )}
         </>
         <span className="post-card--pills">
@@ -78,7 +78,11 @@ const PostCard = ({ post }) => {
           <div className="author--image">
             <img
               className=""
-              src={imageBuilder.image(authorImage)}
+              src={
+                authorImage
+                  ? imageBuilder.image(authorImage)
+                  : 'https://via.placeholder.com/64x64'
+              }
               alt="profile users"
               loading="lazy"
             />
