@@ -3,7 +3,7 @@
   "version": "2.0.2",
   "scripts": {
     "dev": "cross-env NODE_ENV=development next dev",
-    "build": "npm run build:studio && npm run build:web && npm run build:sb",
+    "build": "npm run build:studio && npm run build:web",
     "build:web": "next build",
     "build:studio": "echo 'Building Sanity to public/studio…' && cd studio && npx sanity build ../public/studio -y",
     "build:sb": "build-storybook -o ./public/storybook",
@@ -13,7 +13,7 @@
     "analyze:browser": "cross-env BUNDLE_ANALYZE=browser next build",
     "postinstall": "cd studio && npm install",
     "storybook": "start-storybook -p 6006",
-    "chromatic": "npx chromatic"
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "sideEffects": false,
   "license": "MIT",
