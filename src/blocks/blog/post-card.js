@@ -4,7 +4,7 @@ import { imageBuilder } from '@lib/sanity'
 import Link from 'next/link'
 
 const PostCard = ({ post }) => {
-  console.log({ ...post })
+  //console.log({ ...post })
   const {
     authorImage,
     body,
