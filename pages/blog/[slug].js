@@ -11,7 +11,7 @@ function urlFor(source) {
 
 const PostPage = ({ data }) => {
   const { site, page } = data
-  console.log({ page })
+  //console.log({ page })
 
   return (
     <>

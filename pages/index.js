@@ -7,7 +7,7 @@ import { Module } from '@modules/index'
 
 const Home = ({ data }) => {
   const { site, page } = data
-  console.log(data)
+  //console.log(data)
   if (page == null) return <div>Empty</div>
 
   return (

@@ -9,7 +9,7 @@ import PostGrid from '@blocks/blog/post-grid'
 const Blog = ({ data }) => {
   const { site, page } = data
 
-  console.log({ site, page })
+  //console.log({ site, page })
   return (
     <Layout site={site}>
       {page.module
