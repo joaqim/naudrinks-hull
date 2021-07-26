@@ -14,6 +14,8 @@ import {
   GrArticle as ArticleIcon
 } from 'react-icons/gr'
 
+import { CgTag as CategoryIcon } from 'react-icons/cg'
+
 import {
   FiAnchor,
   FiHome,
@@ -327,6 +329,7 @@ export default () =>
         )
         .icon(FiCamera),
       S.divider(),
+      /*
       S.listItem()
         .title('Posts')
         .schemaType('post')
@@ -348,12 +351,17 @@ export default () =>
             )
         ),
       S.divider(),
+      */
+      /*
       S.listItem()
         .title('Categories')
         .child(S.documentTypeList('category')),
       S.listItem()
         .title('Authors')
         .child(S.documentTypeList('author')),
+      */
+      S.divider(),
+      /*
       S.listItem()
         .title('Field level')
         .icon(FieldIcon)
@@ -362,20 +370,21 @@ export default () =>
             .id('field-level')
             .title('Field level translations')
             .items([
-              /*S.documentTypeListItem('article').icon(ArticleIcon),*/
+              S.documentTypeListItem('article').icon(ArticleIcon)
               S.documentTypeListItem('author').icon(AuthorIcon)
             ])
         ),
+        */
       S.listItem()
-        .title('Document level')
+        .title('Blog Content')
         .icon(DocumentIcon)
         .child(
           S.list()
             .id('doc-level')
-            .title('Document level translations')
+            .title('Blog Conent')
             .items([
               S.listItem()
-                .title('Post')
+                .title('Posts')
                 .id('post-docs')
                 .icon(PostIcon)
                 .schemaType('post')
@@ -392,90 +401,10 @@ export default () =>
                       // Assume we can handle all intents (actions) regarding post documents
                       return params.type === 'post'
                     })
-                )
-            ])
-        ),
-      /*
-                .child
-                  documentId =>
-                    S.document()
-                      .documentId(documentId)
-                      .schemaType('post')
-                    .views([
-                      S.view.form().icon(EditIcon),
-                      S.view
-                        .component(SeoPreview)
-                        .options({ previewURL })
-                        .icon(EyeIcon)
-                        .title('SEO Preview')
-                    ])
-                    */ /*
                 ),
-              S.listItem()
-                .title('Posts')
-                .child(S.documentTypeList('post')),
-  */ /*
-              S.listItem()
-                .title('Categories')
-                .child(S.documentTypeList('category')),
-              S.listItem()
-                .title('Authors')
-                .child(S.documentTypeList('author'))
+              S.documentTypeListItem('author').icon(AuthorIcon),
+              S.documentTypeListItem('category').icon(CategoryIcon)
             ])
         ),
-  */ /*
-      S.listItem()
-        .title('Blog')
-        .id('blog')
-        .child(
-          S.list()
-            .title('Blog')
-            .items([
-              S.listItem()
-                .title('Posts')
-                .icon(FiPaperclip)
-                .child(
-                  S.documentTypeList('post')
-                    .title('Posts')
-                    .child(documentId =>
-                      S.document()
-                        .documentId(documentId)
-                        .schemaType('post')
-                        .views([
-                          S.view.form().icon(EditIcon),
-                          S.view
-                            .component(SeoPreview)
-                            .options({ previewURL })
-                            .icon(EyeIcon)
-                            .title('SEO Preview')
-                        ])
-                    )
-                )
-            ])
-        )
-        .child(
-          S.list()
-            .title('Blog')
-            .items([
-              S.listItem()
-                .title('Blog Page')
-                .icon(FiFolder)
-                .child(
-                  S.editor()
-                    .title('Blog Page')
-                    .id('blogPage')
-                    .schemaType('blogPage')
-                    .documentId('blogPage')
-                  /*
-                    .views([
-                      S.view.form().icon(EditIcon),
-                      S.view
-                        .component(SeoPreview)
-                        .options({ previewURL })
-                        .icon(EyeIcon)
-                        .title('SEO Preview')
-                    ])
-                    */ ...S.documentTypeListItems().filter(
-        hiddenDocTypes
-      )
+      ...S.documentTypeListItems().filter(hiddenDocTypes)
     ])
