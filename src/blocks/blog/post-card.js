@@ -3,9 +3,12 @@ import Photo from '@components/photo'
 import { imageBuilder } from '@lib/sanity'
 import Link from 'next/link'
 
+import { useRouter } from 'next/router'
+
 const PostCard = ({ post }) => {
-  console.log({ ...post })
-  const locale = 'en_GB'
+  //console.log({ ...post })
+  const router = useRouter()
+  const { locale } = router
   const {
     authorImage,
     body,
@@ -26,7 +29,7 @@ const PostCard = ({ post }) => {
         className="rounded-lg rounded-b-none"
         src={
           image
-            ? imageBuilder.image(image[locale])
+            ? imageBuilder.image(image.size > 1 ? image[locale] : image['se'])
             : `https://via.placeholder.com/1024x682`
         }
         alt="thumbnail"
