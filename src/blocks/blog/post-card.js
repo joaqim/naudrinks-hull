@@ -4,7 +4,8 @@ import { imageBuilder } from '@lib/sanity'
 import Link from 'next/link'
 
 const PostCard = ({ post }) => {
-  //console.log({ ...post })
+  console.log({ ...post })
+  const locale = 'en_GB'
   const {
     authorImage,
     body,
@@ -25,7 +26,7 @@ const PostCard = ({ post }) => {
         className="rounded-lg rounded-b-none"
         src={
           image
-            ? imageBuilder.image(image)
+            ? imageBuilder.image(image[locale])
             : `https://via.placeholder.com/1024x682`
         }
         alt="thumbnail"
@@ -36,7 +37,7 @@ const PostCard = ({ post }) => {
           {categories ? (
             categories.map((category, key) => (
               <span key={key} className="post-card--category">
-                {category}
+                {category[locale]}
               </span>
             ))
           ) : (
@@ -64,11 +65,11 @@ const PostCard = ({ post }) => {
       </div>
       <div className="px-4 py-2">
         <h1 className="post-card--title">
-          <Link href={`blog/${slug.current}`}>{title}</Link>
+          <Link href={`blog/${slug.current}`}>{title[locale]}</Link>
         </h1>
       </div>
       <div className="post-card--description">
-        <p className="">{description ? description : null}</p>
+        <p className="">{description ? description[locale] : null}</p>
         <router-link to="blog/detail" className="post-card--link">
           read more...
         </router-link>

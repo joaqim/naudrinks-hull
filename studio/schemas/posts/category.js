@@ -2,6 +2,7 @@ export default {
   name: 'category',
   title: 'Category',
   type: 'document',
+  localize: true,
   fields: [
     {
       name: 'title',
@@ -13,5 +14,10 @@ export default {
       title: 'Description',
       type: 'text'
     }
-  ]
+  ],
+  preview: {
+    select: {
+      title: 'title'
+    }
+  }
 }

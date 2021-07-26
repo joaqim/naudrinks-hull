@@ -143,10 +143,10 @@ export default createSchema({
       /*
     post,
     */
+      //category,
       author,
-      category,
       richText,
       blockContent
     ])
-    .concat(translateFields([post]))
+    .concat(translateFields([post, category]))
 })
