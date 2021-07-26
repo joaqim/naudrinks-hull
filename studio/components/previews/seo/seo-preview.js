@@ -26,7 +26,10 @@ class SeoPreviews extends React.PureComponent {
   }
 
   loadData = () => {
-    sanityClient
+    const client = sanityClient.withConfig({
+      apiVersion: process.env.SANITY_API_VERSION || '2021-03-25'
+    })
+    client
       .fetch(
         `
         *[_type == "seoSettings"][0]{
