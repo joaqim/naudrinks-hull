@@ -65,6 +65,11 @@ import post from './posts/post'
 import author from './posts/author'
 import blockContent from './posts/blockContent'
 
+import richText from './objects/rich-text'
+
+// Translation - sanity-plugin-intl-input
+import { translateFields } from './translation/fieldTranslation'
+
 /*  ------------------------------------------ */
 /*  Your Schema documents / modules / objects
 /*  ------------------------------------------ */
@@ -72,73 +77,76 @@ export default createSchema({
   // The name of our schema
   name: 'content',
 
-  types: schemaTypes.concat([
-    /* ----------------- */
-    /* 1: Document types */
-    homePage,
-    shopPage,
-    blogPage,
-    errorPage,
-    page,
-    product,
-    productVariant,
-    collection,
+  types: schemaTypes
+    .concat([
+      /* ----------------- */
+      /* 1: Document types */
+      homePage,
+      shopPage,
+      blogPage,
+      errorPage,
+      page,
+      product,
+      productVariant,
+      collection,
 
-    generalSettings,
-    cookieSettings,
-    promoSettings,
-    headerSettings,
-    footerSettings,
-    cartSettings,
-    seoSettings,
-    menu,
-    redirect,
+      generalSettings,
+      cookieSettings,
+      promoSettings,
+      headerSettings,
+      footerSettings,
+      cartSettings,
+      seoSettings,
+      menu,
+      redirect,
 
-    /* --------------- */
-    /* 2: Module types */
-    grid,
-    gridColumn,
-    gridSize,
-    hero,
-    marquee,
-    dividerPhoto,
-    newsletter,
-    productHero,
-    collectionGrid,
+      /* --------------- */
+      /* 2: Module types */
+      grid,
+      gridColumn,
+      gridSize,
+      hero,
+      marquee,
+      dividerPhoto,
+      newsletter,
+      productHero,
+      collectionGrid,
 
-    /* -------------- */
-    /* 3: Block types */
-    freeform,
-    accordions,
-    productCard,
+      /* -------------- */
+      /* 3: Block types */
+      freeform,
+      accordions,
+      productCard,
 
-    /* ----------------------- */
-    /* 4: Generic Object types */
-    seo,
+      /* ----------------------- */
+      /* 4: Generic Object types */
+      seo,
 
-    productGalleryPhotos,
-    productListingPhotos,
-    productCartPhotos,
-    productOption,
-    productOptionValue,
-    productOptionSettings,
+      productGalleryPhotos,
+      productListingPhotos,
+      productCartPhotos,
+      productOption,
+      productOptionValue,
+      productOptionSettings,
 
-    navDropdown,
-    navPage,
-    navLink,
-    socialLink,
+      navDropdown,
+      navPage,
+      navLink,
+      socialLink,
 
-    simplePortableText,
-    complexPortableText,
+      simplePortableText,
+      complexPortableText,
 
-    accordion,
-    figure,
-    horizontalRule,
-
+      accordion,
+      figure,
+      horizontalRule,
+      /*
     post,
-    author,
-    category,
-
-    blockContent
-  ])
+    */
+      author,
+      category,
+      richText,
+      blockContent
+    ])
+    .concat(translateFields([post]))
 })

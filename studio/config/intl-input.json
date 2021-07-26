@@ -1,6 +1,4 @@
 {
-  "idStructure": "subpath",
-  "referenceBehavior": "hard",
-  "languages": ["en_US", "sv_SE"]
+    "idStructure": "subpath",
+    "referenceBehavior": "hard"
 }
-

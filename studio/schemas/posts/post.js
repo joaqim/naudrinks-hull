@@ -2,41 +2,10 @@ export default {
   name: 'post',
   title: 'Post',
   type: 'document',
-  /*
-  i18n: {
-    base: 'en_US',
-    messages: {
-      loading: 'Loading languages...',
-      missing: 'Missing',
-      draft: 'Draft',
-      publishing: 'Publishing...',
-      publish: 'Publish',
-      deleteAll: {
-        buttonTitle: 'Delete (incl. translations)',
-        deleting: 'Deleting...'
-      },
-      duplicateAll: {
-        buttonTitle: 'Duplicate (incl. translations)',
-        duplicating: 'Duplicating...'
-      },
-      translationsMaintenance: {
-        title: 'Translation Maintenance',
-        selectSchemaPlaceholder: 'Select schema type',
-        idStructureMismatch: 'document(s) with mismatched ID structures',
-        missingLanguageField: 'document(s) are missing the language field',
-        missingDocumentRefs: 'document(s) have missing translation references',
-        orphanDocuments: 'orphaned translation document(s)',
-        referenceBehaviorMismatch:
-          'document(s) with mismatched reference behaviors',
-        fix: 'Fix'
-      }
-    },
-    fieldNames: {
-      lang: '__i18n_lang',
-      references: '__i18n_refs'
-    }
-  },
-  */
+  // This property says we should have all fields localized,
+  // except any field that explicitly says localize: false
+  localize: true,
+
   fields: [
     {
       name: 'title',
@@ -50,13 +19,15 @@ export default {
       options: {
         source: 'title',
         maxLength: 96
-      }
+      },
+      localize: false
     },
     {
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: { type: 'author' }
+      to: { type: 'author' },
+      localize: false
     },
     {
       name: 'mainImage',
@@ -70,7 +41,8 @@ export default {
       name: 'categories',
       title: 'Categories',
       type: 'array',
-      of: [{ type: 'reference', to: { type: 'category' } }]
+      of: [{ type: 'reference', to: { type: 'category' } }],
+      localize: false
     },
     {
       name: 'publishedAt',
@@ -81,7 +53,8 @@ export default {
         timeFormat: 'HH:mm',
         timeStep: 15,
         calendarTodayLabel: 'Today'
-      }
+      },
+      localize: false
     },
     {
       name: 'description',
@@ -97,14 +70,15 @@ export default {
     {
       name: 'body',
       title: 'Body',
-      type: 'blockContent'
+      //type: 'blockContent'
+      type: 'richText'
     }
   ],
 
   preview: {
     select: {
       title: 'title',
-      author: 'author.name',
+      //author: 'author.name',
       media: 'mainImage'
     },
     prepare(selection) {

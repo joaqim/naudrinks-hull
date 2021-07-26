@@ -1,7 +1,18 @@
 import S from '@sanity/desk-tool/structure-builder'
 
+import * as I18nS from 'sanity-plugin-intl-input/lib/structure'
+import { i18n } from './schemas/translation/documentTranslation'
+
 import EyeIcon from 'part:@sanity/base/eye-icon'
 import EditIcon from 'part:@sanity/base/edit-icon'
+
+import {
+  GrDocumentText as FieldIcon,
+  GrMultiple as DocumentIcon,
+  GrTextAlignLeft as PostIcon,
+  GrUser as AuthorIcon,
+  GrArticle as ArticleIcon
+} from 'react-icons/gr'
 
 import {
   FiAnchor,
@@ -57,11 +68,15 @@ const hiddenDocTypes = listItem =>
     'category',
     'blogPage'
   ].includes(listItem.getId())
-import * as Structure from 'sanity-plugin-intl-input/lib/structure'
 
-// default implementation by re-exporting
-//export const getDefaultDocumentNode = Structure.getDefaultDocumentNode
-//export default Structure.default
+export const getDefaultDocumentNode = props => {
+  if (props.schemaType === 'post') {
+    return S.document().views(
+      I18nS.getDocumentNodeViewsForSchemaType(props.schemaType)
+    )
+  }
+  return S.document()
+}
 
 export default () =>
   S.list()
@@ -338,9 +353,49 @@ export default () =>
         .child(S.documentTypeList('category')),
       S.listItem()
         .title('Authors')
+        .child(S.documentTypeList('author')),
+      S.listItem()
+        .title('Field level')
+        .icon(FieldIcon)
         .child(
-          S.documentTypeList('author')
-        ) /*
+          S.list()
+            .id('field-level')
+            .title('Field level translations')
+            .items([
+              /*S.documentTypeListItem('article').icon(ArticleIcon),*/
+              S.documentTypeListItem('author').icon(AuthorIcon)
+            ])
+        ),
+      S.listItem()
+        .title('Document level')
+        .icon(DocumentIcon)
+        .child(
+          S.list()
+            .id('doc-level')
+            .title('Document level translations')
+            .items([
+              S.listItem()
+                .title('Post')
+                .id('post-docs')
+                .icon(PostIcon)
+                .schemaType('post')
+                .child(
+                  S.documentList()
+                    .id('post')
+                    .title('Posts')
+                    // Use a GROQ filter to get documents.
+                    .filter(
+                      '_type == "post" && (!defined(_lang) || _lang == $baseLang)'
+                    )
+                    .params({ baseLang: i18n.base })
+                    .canHandleIntent((_name, params, _context) => {
+                      // Assume we can handle all intents (actions) regarding post documents
+                      return params.type === 'post'
+                    })
+                )
+            ])
+        ),
+      /*
                 .child
                   documentId =>
                     S.document()
@@ -354,9 +409,7 @@ export default () =>
                         .icon(EyeIcon)
                         .title('SEO Preview')
                     ])
-                    */, // This returns an array of all the document types // defined in schema.js. We filter out those that we have // defined the structure above
-      ,
-      /*
+                    */ /*
                 ),
               S.listItem()
                 .title('Posts')
