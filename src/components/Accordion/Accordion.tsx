@@ -1,4 +1,4 @@
-import React, { useState, useEffect, HTMLAttributes, ReactNode } from 'react'
+import React, { useState, useEffect, ReactNode } from 'react'
 import { m } from 'framer-motion'
 import cx from 'classnames'
 
@@ -7,21 +7,10 @@ interface IAccorionAnimation {
   height: string | number
 }
 
-export interface AccordionProps extends HTMLAttributes<HTMLDivElement> {
+export interface AccordionProps {
+  //extends HTMLDivElement<HTMLAttributes> {
   toggle: boolean
-  onChange: any
-  //onChange: (id: string, change: FormEvent<HTMLDivElement>) => void
-
-  /*
-  onChange: (
-    id: number|string, change: {
-    url?: string,
-    target?: string,
-    features?: string,
-    replace?: boolean
-   => Window})
-   */
-
+  onChange: (id: string, change: any) => void
   id: string
   title: string
   children?: ReactNode

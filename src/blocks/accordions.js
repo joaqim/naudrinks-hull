@@ -2,7 +2,7 @@ import React from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 import { serializers } from '@lib/serializers'
 
-import Accordion from '@components/accordion'
+import Accordion from '@components/Accordion'
 
 const Accordions = ({ data }) => {
   const { items } = data

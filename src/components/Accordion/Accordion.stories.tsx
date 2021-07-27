@@ -9,7 +9,6 @@ export default {
 export const Default: Story<AccordionProps> = (args) => <Accordion {...args} />
 Default.args = {
   toggle: true,
-  onChange: (id: string, change: any) => console.log(change),
   id: '1',
   title: 'Accordion 1',
   children: <div>Test</div>,
