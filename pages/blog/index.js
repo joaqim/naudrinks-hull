@@ -6,7 +6,7 @@ import { getStaticPage, modules, allPosts } from '@lib/api'
 import { Module } from '@modules/index'
 import PostGrid from '@blocks/blog/post-grid'
 
-const Blog = ({ data }) => {
+const Blog = ({ data, translationData }) => {
   const { site, page } = data
 
   //console.log({ site, page })
@@ -27,7 +27,7 @@ const Blog = ({ data }) => {
   )
 }
 
-export async function getStaticProps({ preview, previewData }) {
+export async function getStaticProps({ preview, previewData, locale }) {
   const blogData = await getStaticPage(
     `
     *[_type == "blogPage"] | order(_updatedAt desc)[0]{

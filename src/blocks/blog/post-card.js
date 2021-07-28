@@ -51,7 +51,7 @@ const PostCard = ({ post }) => {
           {/* Clock Icon SVG */}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-5 h-5 text-blue-500"
+            //className="w-5 h-5 text-blue-500"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -66,16 +66,22 @@ const PostCard = ({ post }) => {
           <p className="">6 Mins</p>
         </span>
       </div>
-      <div className="px-4 py-2">
-        <h1 className="post-card--title">
+      <div className="post-card--title-container">
+        <h1>
           <Link href={`blog/${slug.current}`}>{title[locale]}</Link>
         </h1>
       </div>
       <div className="post-card--description">
         <p className="">{description ? description[locale] : null}</p>
+        <Link href={`/blog/${slug.current}`} className="post-card--link">
+          read more...
+        </Link>
+
+        {/*
         <router-link to="blog/detail" className="post-card--link">
           read more...
         </router-link>
+        */}
       </div>
       <div className="post-card--bottom">
         <div className="author--content">
@@ -93,7 +99,7 @@ const PostCard = ({ post }) => {
             <div className="">
               <p className="">{name}</p>
               <p className="">
-                {/* 2 hours ago*/}
+                {/*TODO: syntax change to time remaining i.e.:  2 hours ago*/}
                 {date}
               </p>
             </div>
@@ -102,7 +108,7 @@ const PostCard = ({ post }) => {
             <div className="post-card--bottom--likes">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-5 h-5"
+                //className="w-5 h-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -114,7 +120,7 @@ const PostCard = ({ post }) => {
                   d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
                 />
               </svg>
-              <p className="font-medium">10</p>
+              <p>10</p>
             </div>
           </div>
         </div>

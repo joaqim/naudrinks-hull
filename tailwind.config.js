@@ -4,7 +4,10 @@ module.exports = {
   },
   purge: {
     content: [
+      './blocks/**/*.js',
+      './blocks/**/*.tsx',
       './components/**/*.js',
+      './components/**/*.tsx',
       './lib/**/*.js',
       './modules/**/*.js',
       './pages/**/*.js',

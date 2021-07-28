@@ -16,7 +16,7 @@ export interface AccordionProps {
   children?: ReactNode
 }
 
-export const Accordion = ({
+const Accordion = ({
   toggle,
   onChange,
   id,
@@ -70,3 +70,5 @@ export const Accordion = ({
     </div>
   )
 }
+
+export default Accordion
