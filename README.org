@@ -16,6 +16,13 @@ Store Frontend]]
 
 ** Roadmap [0/1]
 *** TODO Create a landing page in src/components [1/2]
+
+** Features
+
+*** Marketing
+*** Content (Blog/Posts)
+
+
 **** DRAFT Create a  hero component
      :LOGBOOK:
      CLOCK: [2021-05-03 Mon 11:20]--[2021-05-03 Mon 11:27] =>  0:07

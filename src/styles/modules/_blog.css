@@ -17,7 +17,7 @@
   }
 
   &--category {
-    @apply inline-block ring-4 rounded-full text-sm font-medium tracking-wide px-3 pt-0.5 text-black;
+    @apply inline-block ring-4 rounded-full text-sm font-medium tracking-wide px-3 pt-0.5 text-pageText;
   }
 
   &--pills {

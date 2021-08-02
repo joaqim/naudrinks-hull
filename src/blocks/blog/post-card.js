@@ -36,17 +36,13 @@ const PostCard = ({ post }) => {
         loading="lazy"
       />
       <div className="post-card--categories">
-        <>
-          {categories ? (
-            categories.map((category, key) => (
+        {categories
+          ? categories.map((category, key) => (
               <span key={key} className="post-card--category">
                 {category[locale]}
               </span>
             ))
-          ) : (
-            <span />
-          )}
-        </>
+          : null}
         <span className="post-card--pills">
           {/* Clock Icon SVG */}
           <svg
