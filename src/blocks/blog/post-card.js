@@ -20,9 +20,7 @@ const PostCard = ({ post }) => {
     slug,
     image,
   } = post
-  /*
-      <div className="flex flex-col justify-between m-2 md:m-6">
-      */
+  /* <div className="flex flex-col justify-between m-2 md:m-6"> */
   return (
     <div className="post-card">
       <img

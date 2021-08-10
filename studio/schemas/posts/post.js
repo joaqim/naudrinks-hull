@@ -42,6 +42,7 @@ export default {
       title: 'Categories',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'category' } }],
+      required: true,
       localize: false
     },
     {
