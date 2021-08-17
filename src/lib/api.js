@@ -47,9 +47,9 @@ const post = `
   {
     title,
     slug,
-    "name": author->name,
-    "categories": categories[]->title,
+    "authorName": author->name,
     "authorImage": author->image,
+    "categories": categories[]->title,
     "description": description,
     body,
     "date": publishedAt,

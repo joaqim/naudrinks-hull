@@ -35,7 +35,8 @@ export default {
       type: 'image',
       options: {
         hotspot: true
-      }
+      },
+      localize: false
     },
     {
       name: 'categories',
