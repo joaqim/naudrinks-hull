@@ -3,6 +3,7 @@
   "timezone": "Europe/Stockholm",
   "extends": [
     "github>sanity-io/renovate-presets:sanity-template",
+    "github>teppeis/renovate-config",
     "schedule:weekly"
   ],
   "lockFileMaintenance": {
