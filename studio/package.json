@@ -1,9 +1,9 @@
 {
-  "name": "hull",
+  "name": "naudrinks-hull",
   "private": true,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "package.json",
-  "author": "Nick DiMatteo <hello@nickdimatteo.com>",
+  "contributors": ["Nick DiMatteo <hello@nickdimatteo.com>"],
   "scripts": {
     "build": "sanity build",
     "dev": "sanity start"
