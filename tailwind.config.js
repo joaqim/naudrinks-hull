@@ -3,7 +3,7 @@ module.exports = {
     preflight: false,
   },
   purge: {
-    content: [],
+    content: ['./src/{blocks,components,modules}/**/*.{js,ts,jsx,tsx}'],
     options: {
       safelist: [
         /^grid-cols-/,

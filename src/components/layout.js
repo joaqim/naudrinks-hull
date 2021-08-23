@@ -91,7 +91,10 @@ const Layout = ({ site = {}, page = {}, schema, children }) => {
           />
         )}
 
-        <link rel="preconnect" href="https://hull-demo.myshopify.com" />
+        <link
+          rel="preconnect"
+          href={`https://${process.env.SHOPIFY_STORE_ID}.myshopify.com`}
+        />
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin />
 
         <title>{metaTitle}</title>
