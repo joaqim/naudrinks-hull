@@ -1,33 +1,41 @@
 import { Meta, Story } from '@storybook/react'
 import PostCard, { PostCardProps } from './post-card'
 
-export default { component: PostCard, title: 'Post Card' } as Meta
+export default {
+  component: PostCard,
+  title: 'Post Card',
+} as Meta
 
 export const DefaultCard: Story<PostCardProps> = (args) => (
   <PostCard {...args} />
 )
 
 // DefaultCard.story = { parameters: { nextRouter: {} } }
-
 DefaultCard.args = {
   post: {
-    _id: '',
-    _type: 'post',
-    _createdAt: '',
-    _updatedAt: '',
-    _rev: '',
     slug: { _type: 'slug', current: 'test-post' },
     description: { _type: 'description', en: 'Description' },
+    createdAt: '2021-08-19 10:49',
     title: { _type: 'title', en: 'Title' },
-    authorName: 'Author',
-    authorImage: {
-      asset: {
-        _type: 'reference',
-        _ref: 'image-d262062282136f514ec48f6d2f79409827d3ed43-670x870-png',
+    // @ts-ignore
+    author: {
+      name: 'Author Name',
+      slug: { current: 'author-name' },
+      image: {
+        asset: {
+          _type: 'reference',
+          _ref: 'image-d262062282136f514ec48f6d2f79409827d3ed43-670x870-png',
+        },
       },
     },
-    // @ts-ignore
-    categories: [{ en: 'Placeholder Category' }],
+    categories: [
+      {
+        // @ts-ignore
+        title: { en: 'Placeholder Category' },
+        // @ts-ignore
+        slug: { current: 'placeholder-category' },
+      },
+    ],
     mainImage: {
       _type: 'image',
       asset: {

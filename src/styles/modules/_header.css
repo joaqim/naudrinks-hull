@@ -16,7 +16,7 @@ a[href="#content"].skip-link {
   &--outer {
     @apply relative;
   }
-  
+
   &--inner {
     @apply relative z-20 p-1 sm:p-4 bg-pageBG;
 
@@ -32,7 +32,7 @@ a[href="#content"].skip-link {
       @apply text-white delay-75;
     }
   }
-  
+
   &--content {
     @apply flex flex-col items-center relative z-30;
   }
@@ -68,7 +68,7 @@ a[href="#content"].skip-link {
     @apply block p-2;
 
     svg {
-      @apply block fill-current w-auto h-12;
+      @apply block fill-current w-auto h-10 sm:h-16;
     }
   }
 }

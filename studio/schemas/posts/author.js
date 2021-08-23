@@ -15,7 +15,8 @@ export default {
       options: {
         source: 'name',
         maxLength: 96
-      }
+      },
+      validation: Rule => Rule.required()
     },
     {
       name: 'image',

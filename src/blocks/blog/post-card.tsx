@@ -1,13 +1,15 @@
 import React from 'react'
-import Photo from '@components/photo'
 import { imageBuilder } from '@lib/sanity'
 import Link from 'next/link'
 import * as S from '@compiled/schema'
-
 import { useRouter } from 'next/router'
 
 export interface PostCardProps {
-  post: S.Post & { authorImage: S.SanityImage; authorName: string }
+  post: S.Post & {
+    categories: S.Category[]
+    author: { name: string; slug: { current: string }; image: S.SanityImage }
+    createdAt: string
+  }
 }
 
 const PostCard = ({ post }: PostCardProps) => {
@@ -19,11 +21,10 @@ const PostCard = ({ post }: PostCardProps) => {
     categories,
     description,
     title,
-    _createdAt,
+    createdAt,
     slug,
     mainImage,
-    authorName,
-    authorImage,
+    author,
   } = post
 
   return (
@@ -31,17 +32,19 @@ const PostCard = ({ post }: PostCardProps) => {
       <img
         className="rounded-lg rounded-b-none object-cover w-full h-full"
         src={imageBuilder.image(mainImage).width(512).url()}
-        alt={`${title} - Thumbnail`}
+        alt={`${title} - main image`}
         loading="lazy"
       />
       <div className="flex justify-between px-4">
         {categories
-          ? categories.map((category, key) => (
+          ? categories.map((category: S.Category, key: number) => (
               <span
                 key={key}
                 className="inline-block ring-4 rounded-full text-sm font-medium tracking-wide px-3 pt-0.5"
               >
-                {category[locale]}
+                <Link href={`category/${category.slug.current}`}>
+                  <a>{category.title[locale]}</a>
+                </Link>
               </span>
             ))
           : null}
@@ -78,12 +81,58 @@ const PostCard = ({ post }: PostCardProps) => {
         <Link href={`/blog/${slug.current}`}>
           <a className="font-bold">read more...</a>
         </Link>
-
-        {/*
-        <router-link to="blog/detail" className="post-card--link">
-          read more...
-        </router-link>
-        */}
+      </div>
+      <div className="flex flex-row items-end w-full h-full px-4 mt-4">
+        <div className="flex w-full py-4 border-t border-darkGray">
+          <div className="flex items-center w-full border-r border-darkGray space-x-3">
+            {author.image ? (
+              <Link href={`/authors/${author.slug.current}`}>
+                <a>
+                  <img
+                    className="object-cover w-8 h-8 border-2 border-white rounded-full"
+                    src={imageBuilder.image(author.image).url()}
+                    alt={`${author.name} - profile picture`}
+                    loading="lazy"
+                  />
+                </a>
+              </Link>
+            ) : (
+              <span />
+            )}
+            <div>
+              <p className="text-sm font-semibold tracking-wide text-darkGray">
+                <Link href={`/authors/${author.slug.current}`}>
+                  <a>{author.name}</a>
+                </Link>
+              </p>
+              <p className="text-xs font-light tracking-wider text-lightGrayAlt">
+                {createdAt}
+                {/*formatDistance(new Date(createdAt), new Date(), {
+                  addSuffix: true,
+                  })*/}
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center flex-shrink-0 px-2">
+            <div className="flex items-center text-pageText space-x-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-5 h-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                />
+              </svg>
+              <p className="font-medium">10</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

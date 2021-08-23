@@ -42,7 +42,10 @@ export default {
         }
       ],
       options: {
-        condition: (document, context) => context().bgType === 'photo'
+        condition: (document, context) => {
+          return true
+          //if (typeof context == 'function') return context().bgType === 'photo'
+        }
       }
     },
     {
@@ -65,7 +68,10 @@ export default {
         }
       ],
       options: {
-        condition: (document, context) => context().bgType === 'video'
+        condition: (document, context) => {
+          // context && context().bgType === 'video'
+          if (typeof context == 'function') return context().bgType === 'video'
+        }
       }
     }
   ],

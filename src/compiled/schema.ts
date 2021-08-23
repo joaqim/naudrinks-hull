@@ -1248,6 +1248,13 @@ export interface Category extends SanityDocument {
      */
     fr?: string;
   };
+
+  /**
+   * Slug — `slug`
+   *
+   *
+   */
+  slug?: { _type: "slug"; current: string };
 }
 
 export type Grid = {

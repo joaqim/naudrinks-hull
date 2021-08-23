@@ -13,6 +13,16 @@ export default {
       name: 'description',
       title: 'Description',
       type: 'text'
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        maxLength: 96
+      },
+      localize: false,
+      validation: Rule => Rule.required()
     }
   ],
   preview: {
