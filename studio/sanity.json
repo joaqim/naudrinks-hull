@@ -2,7 +2,7 @@
   "root": true,
   "api": {
     "projectId": "bi2vevsf",
-    "dataset": "production"
+    "dataset": "development"
   },
   "project": {
     "name": "HULL",
@@ -24,9 +24,7 @@
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
