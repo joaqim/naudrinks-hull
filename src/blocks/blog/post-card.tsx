@@ -20,8 +20,7 @@ const t = {
 
 const PostCard = ({ post }: PostCardProps) => {
   const router = useRouter()
-  // const locale = router.locale || 'en'
-  const locale = 'sv'
+  const locale = router.locale || 'en'
 
   const {
     body,

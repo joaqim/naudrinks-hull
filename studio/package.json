@@ -1,7 +1,7 @@
 {
   "name": "naudrinks-hull",
   "private": true,
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "package.json",
   "contributors": ["Nick DiMatteo <hello@nickdimatteo.com>"],
   "scripts": {
