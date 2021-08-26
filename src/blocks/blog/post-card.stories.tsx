@@ -3,7 +3,7 @@ import PostCard, { PostCardProps } from './post-card'
 
 export default {
   component: PostCard,
-  title: 'Post Card',
+  title: 'Components/Post Card',
 } as Meta
 
 export const DefaultCard: Story<PostCardProps> = (args) => (

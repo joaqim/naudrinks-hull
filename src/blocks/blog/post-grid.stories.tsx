@@ -4,7 +4,7 @@ import DefaultCard from './post-card'
 
 export default {
   component: PostGrid,
-  title: 'Post Grid',
+  title: 'Components/Post Grid',
 } as Meta
 
 export const DefaultGrid = (args) => <PostGrid {...args}></PostGrid>
