@@ -757,6 +757,20 @@ export interface FooterSettings extends SanityDocument {
    *
    */
   social?: Array<SanityKeyed<SocialLink>>;
+
+  /**
+   * Payment Methods Title — `string`
+   *
+   *
+   */
+  paymentsTitle?: string;
+
+  /**
+   * Payment Methods — `array`
+   *
+   *
+   */
+  payments?: Array<SanityKeyed<PaymentMethod>>;
 }
 
 /**
@@ -1098,46 +1112,46 @@ export interface Post extends SanityDocument {
   body?: {
     _type: "body";
     /**
-     * Swedish — `richText`
+     * Swedish — `blockContent`
      *
      *
      */
-    se?: RichText;
+    se?: BlockContent;
 
     /**
-     * English — `richText`
+     * English — `blockContent`
      *
      *
      */
-    en?: RichText;
+    en?: BlockContent;
 
     /**
-     * Italian — `richText`
+     * Italian — `blockContent`
      *
      *
      */
-    it?: RichText;
+    it?: BlockContent;
 
     /**
-     * Norwegian — `richText`
+     * Norwegian — `blockContent`
      *
      *
      */
-    no?: RichText;
+    no?: BlockContent;
 
     /**
-     * Spanish — `richText`
+     * Spanish — `blockContent`
      *
      *
      */
-    es?: RichText;
+    es?: BlockContent;
 
     /**
-     * French — `richText`
+     * French — `blockContent`
      *
      *
      */
-    fr?: RichText;
+    fr?: BlockContent;
   };
 }
 
@@ -1823,6 +1837,23 @@ export type SocialLink = {
     | "Twitter"
     | "YouTube"
     | "Github";
+
+  /**
+   * URL — `url`
+   *
+   *
+   */
+  url?: string;
+};
+
+export type PaymentMethod = {
+  _type: "paymentMethod";
+  /**
+   * Provider (Visa,Stripe, PayPal etc...) — `string`
+   *
+   *
+   */
+  icon?: string;
 
   /**
    * URL — `url`

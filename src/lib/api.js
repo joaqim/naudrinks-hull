@@ -331,7 +331,15 @@ const site = `
             icon,
             url
           }
+        },
+        {
+          "title": paymentTitle,
+          paymentMethods[]{
+            icon,
+            url
+          }
         }
+
       ]
     },
     "seo": *[_type == "seoSettings"][0]{

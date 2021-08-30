@@ -27,6 +27,12 @@ export default {
       name: 'footerBlock4',
       description: 'Settings for the fourth footer block',
       options: { collapsible: true }
+    },
+    { 
+      title: 'Payment methods',
+      name: 'footerPayments',
+      description: 'Settings for Payment methods to display below footer blocks',
+      options: { collapsible: true }
     }
   ],
   fields: [
@@ -80,6 +86,19 @@ export default {
       type: 'array',
       of: [{ type: 'socialLink' }],
       fieldset: 'footerBlock4'
+    },
+    {
+      title: 'Payment Methods Title',
+      name: 'paymentTitle',
+      type: 'string',
+      fieldset: 'footerPayments'
+    },
+    {
+      title: 'Payment Methods',
+      name: 'paymentMethods',
+      type: 'array',
+      of: [{type: 'paymentMethod'}],
+      fieldset: 'footerPayments'
     }
   ],
   preview: {

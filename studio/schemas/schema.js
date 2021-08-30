@@ -51,6 +51,7 @@ import navDropdown from './objects/nav-dropdown'
 import navPage from './objects/nav-page'
 import navLink from './objects/nav-link'
 import socialLink from './objects/social-link'
+import paymentMethod from './objects/payment-method'
 
 import simplePortableText from './objects/portable-simple'
 import complexPortableText from './objects/portable-complex'
@@ -133,6 +134,7 @@ export default createSchema({
       navPage,
       navLink,
       socialLink,
+      paymentMethod,
 
       simplePortableText,
       complexPortableText,
