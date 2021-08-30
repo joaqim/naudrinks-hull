@@ -8,7 +8,7 @@ import { isBrowser, useWindowSize } from '@lib/helpers'
 import generateSchema from '@lib/schema'
 
 import CookieBar from '@modules/shared/cookie-bar'
-import Header from '@modules/shared/header'
+import Header from '@modules/shared/Header'
 import Footer from '@modules/shared/footer'
 
 if (isBrowser) {
