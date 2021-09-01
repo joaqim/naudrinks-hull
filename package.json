@@ -1,6 +1,6 @@
 {
   "name": "naudrinks-hull",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "scripts": {
     "dev": "cross-env NODE_ENV=development next dev",
     "build": "npm run build:studio && npm run build:web",
