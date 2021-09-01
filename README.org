@@ -5,8 +5,7 @@
    :END:
 [[https://img.shields.io/badge/License-MIT-yellow.svg]]
 ** Links
-[[https://naudrinks-hull.vercel.app/][
-Store Frontend]]
+[[https://naudrinks-hull.vercel.app/][Store Frontend]]
 
 [[https://naudrinks-hull.vercel.app/studio][Sanity Studio]]
 
