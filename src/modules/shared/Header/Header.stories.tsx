@@ -10,10 +10,28 @@ export const Default: Story<HeaderProps> = (args) => <Header {...args} />
 Default.args = {
   data: {
     promo: {},
-    menuDesktopLeft: {},
-    menuDesktopRight: {},
-    menuMobilePrimary: {},
-    menuMobileSecondary: {},
+    menuDesktopLeft: {
+      items: [
+        {
+          dropdownItems: [
+            // { id: '1', title: "DropDown", items: [{ url: "#", title:"Item One" }] }
+          ],
+          title: 'Item Left',
+        },
+      ],
+      useMegaNav: true,
+    },
+    menuDesktopRight: {
+      items: [
+        { dropdownItems: [], title: 'Item Right', page: { type: '_page' } },
+      ],
+    },
+    menuMobilePrimary: {
+      items: [{ dropdownItems: [], title: 'Item Primary' }],
+    },
+    menuMobileSecondary: {
+      items: [{ dropdownItems: [], title: 'Item Secondary' }],
+    },
   },
 }
 
