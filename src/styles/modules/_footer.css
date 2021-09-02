@@ -32,6 +32,17 @@
       }
     }
   }
+  .menu-payment {
+    @apply inline-flex flex-wrap my-4 mx-auto lg:mt-0 lg:mx-0;
+
+    a {
+      @apply block w-14 h-14 px-1 hover:opacity-40;
+
+      svg {
+        @apply block w-full h-full;
+      }
+    }
+  }
 
   &--extras {
     @apply mt-auto;

@@ -47,38 +47,41 @@ const Footer = ({ data = {blocks: []} }: FooterProps) => {
               </div>
             )}
 
-          {block.paymentMethods && (
-            <div className="menu-social">
-            {block.paymentMethods.map((link, key: string) => {
-              return (
-                <a
-                key={key}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                >
-                <Icon name={link.icon} />
-                </a>
-              )
-            })}
-            </div>
-          )}
+            {block.paymentMethods && (
+                <div className="menu-payment">
+                {block.paymentMethods.map((link, key: string) => {
+                    return (
+                        <a
+                        key={key}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >
+                        <Icon name={link.icon} viewBox="0 0 600 300"/>
+                        </a>
+                        )
+                    })}
+                </div>
+                )}
 
-          {/* Put our extras in the last block */}
-          {key === 5 && (
-            <div className="footer--extras">
-            <ThemeSwitch />
 
-            <div className="footer--disclaimer">
-            <p>&copy; {new Date().getFullYear()}. All Rights Reserved.</p>
+            {/* Put our extras in the last block */}
+            {key === 4 && (
+                <div className="footer--extras">
+                <ThemeSwitch />
+
+
+
+                <div className="footer--disclaimer">
+                <p>&copy; {new Date().getFullYear()}. All Rights Reserved.</p>
+                </div>
+                </div>
+                )}
             </div>
-            </div>
-          )}
-          </div>
-        ))}
-    </div>
+              ))}
+  </div>
     </footer>
-  )
+    )
 }
 
 export default Footer
