@@ -149,14 +149,14 @@ const getIcon = (name, color) => {
 }
 
 const Icon = (props) => {
-  const { id = '', name, color, viewBox = '0 0 100 100', className } = props
+  const { id = '', name, color, viewBox = '0 0 100 100', className = 'icon' } = props
 
   return (
     <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox={viewBox}
     aria-labelledby={`${name.replace(/\s/g, '').toLowerCase()}-${id}`}
-    className={className || 'icon'}
+    className={className}
     >
     <title id={`${name.replace(/\s/g, '').toLowerCase()}-${id}`}>
     {name}
