@@ -2,7 +2,7 @@ import React from 'react'
 import dynamic from 'next/dynamic'
 
 const Grid = dynamic(() => import('./grid'))
-const Hero = dynamic(() => import('./hero'))
+const Hero = dynamic(() => import('./Hero'))
 const Marquee = dynamic(() => import('./marquee'))
 const DividerPhoto = dynamic(() => import('./divider-photo'))
 const ProductHero = dynamic(() => import('./shop/product-hero'))
