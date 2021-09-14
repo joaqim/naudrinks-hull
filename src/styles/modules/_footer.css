@@ -8,6 +8,10 @@
   &--block {
     @apply flex flex-col p-8 md:p-8 bg-pageBG text-center lg:text-left;
   }
+  &--block-wide {
+    /* @apply bg-pageBG text-center; */
+    @apply flex flex-col p-8 md:p-8 bg-pageBG text-center lg:text-left;
+  }
 
   .form {
     @apply mt-auto;
