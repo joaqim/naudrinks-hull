@@ -1,7 +1,7 @@
 import React from 'react'
 import cx from 'classnames'
 
-const VideoLoop = ({ title, id, width = 16, height = 9, className }) => {
+const VideoLoop = ({ title, id, width = 16, height = 9, className = "" }) => {
   if (!id) return null
 
   return (

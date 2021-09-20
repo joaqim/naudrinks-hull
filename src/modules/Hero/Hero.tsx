@@ -52,6 +52,7 @@ const Hero = ({ data }: HeroProps) => {
             <Photo
               photo={photos.desktopPhoto}
               width={1600}
+              height={800}
               srcSizes={[800, 1000, 1200, 1600]}
               sizes="100vw"
               layout="fill"
@@ -62,6 +63,7 @@ const Hero = ({ data }: HeroProps) => {
             <Photo
               photo={photos.mobilePhoto}
               width={800}
+              height={1400}
               sizes="100vw"
               layout="fill"
               className="hero--bg is-mobile"

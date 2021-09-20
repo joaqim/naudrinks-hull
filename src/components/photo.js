@@ -13,9 +13,9 @@ const Photo = ({
   layout = 'intrinsic',
   quality = 80,
   hasPlaceholder = true,
-  forceLoad,
-  onLoad,
-  className,
+  forceLoad = undefined, 
+  onLoad = undefined,
+  className = undefined,
 }) => {
   if (!photo) return null
 
