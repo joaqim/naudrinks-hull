@@ -763,14 +763,14 @@ export interface FooterSettings extends SanityDocument {
    *
    *
    */
-  paymentsTitle?: string;
+  paymentTitle?: string;
 
   /**
    * Payment Methods — `array`
    *
    *
    */
-  payments?: Array<SanityKeyed<PaymentMethod>>;
+  paymentMethods?: Array<SanityKeyed<PaymentMethod>>;
 }
 
 /**

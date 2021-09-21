@@ -12,6 +12,7 @@ export interface FooterProps {
     blocks: SanityBlock[]
   }
 }
+
 interface ILink {
   url: string
   icon: string
@@ -19,14 +20,20 @@ interface ILink {
 
 const Footer = ({ data = { blocks: [] } }: FooterProps) => {
   const { blocks } = data
-  console.log(blocks)
 
   return (
     <footer className="footer" role="contentinfo">
       <div className="footer--grid">
         {blocks.map((block, key: number) => (
           <>
-            <div key={key} className={key +1 == blocks.length && key % 2 == 0 ? 'footer--block-wide' : 'footer--block'}>
+            <div
+              key={key}
+              className={
+                key + 1 == blocks.length && key % 2 == 0
+                  ? 'footer--block-wide'
+                  : 'footer--block'
+              }
+            >
               {block.title && <p className="is-h3">{block.title}</p>}
 
               {block.menu?.items && (

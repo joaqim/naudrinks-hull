@@ -45,8 +45,6 @@ const Header = ({ data, classes = '', isTransparent = false }: HeaderProps) => {
     menuMobileSecondary,
   } = data
 
-  console.log(data);
-
   // setup states
   const [isMobileNavOpen, setMobileNavOpen] = useState(false)
   const observerRef = useRef()
