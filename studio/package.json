@@ -1,7 +1,7 @@
 {
   "name": "naudrinks-hull",
   "private": true,
-  "version": "1.0.5",
+  "version": "1.0.6",
   "main": "package.json",
   "contributors": ["Nick DiMatteo <hello@nickdimatteo.com>"],
   "scripts": {
@@ -27,7 +27,7 @@
     "react-icons": "^4.2.0",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
     "sanity-plugin-intl-input": "^5.2.1",
-    "sanity-plugin-media-library": "^1.0.2",
+    "sanity-plugin-media-library": "^2.0.0",
     "sanity-plugin-note-field": "^1.1.1",
     "sanity-plugin-vercel-deploy": "^2.0.0"
   },
