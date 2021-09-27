@@ -1,12 +1,16 @@
 .footer {
-  @apply relative overflow-hidden;
+  @apply relative overflow-hidden font-semibold;
   
   &--grid {
     @apply grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-pageText;
   }
 
   &--block {
-    @apply flex flex-col p-8 md:p-8 bg-pageBG text-center lg:text-left;
+    @apply flex flex-col p-8 md:p-8 bg-pageBG text-center lg:text-left  object-contain;
+
+    &--title {
+      @apply bg-pageText text-pageBG border-solid uppercase p-1 px-2 mx-auto text-3xl lg:text-2xl font-bold leading-tight;
+    }
   }
   &--block-wide {
     /* @apply bg-pageBG text-center; */

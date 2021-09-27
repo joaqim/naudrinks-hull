@@ -18,7 +18,6 @@ interface ILink {
 
 const Hero = ({ data }: HeroProps) => {
   const { content, bgType, photos, video } = data;
-  console.log(data);
 
   return (
     <section className="hero">

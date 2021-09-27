@@ -34,7 +34,9 @@ const Footer = ({ data = { blocks: [] } }: FooterProps) => {
                   : 'footer--block'
               }
             >
-              {block.title && <p className="is-h3">{block.title}</p>}
+              {block.title && (
+                <p className="footer--block--title">{block.title}</p>
+              )}
 
               {block.menu?.items && (
                 //@ts-ignore
@@ -61,20 +63,23 @@ const Footer = ({ data = { blocks: [] } }: FooterProps) => {
               )}
 
               {block.paymentMethods && (
-                <div className="menu-payment">
-                  {block.paymentMethods.map((link: ILink, key: string) => {
-                    return (
-                      <a
-                        key={key}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Icon name={link.icon} viewBox="0 0 600 300" />
-                      </a>
-                    )
-                  })}
-                </div>
+                <>
+                  <div className="">Payment Methods:</div>
+                  <div className="menu-payment">
+                    {block.paymentMethods.map((link: ILink, key: string) => {
+                      return (
+                        <a
+                          key={key}
+                          href={link.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <Icon name={link.icon} viewBox="0 0 600 300" />
+                        </a>
+                      )
+                    })}
+                  </div>
+                </>
               )}
 
               {/* Put our extras in the last block */}
