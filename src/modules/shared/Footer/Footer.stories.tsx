@@ -33,7 +33,6 @@ Default.args = {
         ],
       },
       {
-        title: "Payment Methods",
         paymentMethods: [
           { url: '#', icon: 'Visa' },
           { url: '#', icon: 'Mastercard' },
