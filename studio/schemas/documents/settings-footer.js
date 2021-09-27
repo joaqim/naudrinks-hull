@@ -87,12 +87,14 @@ export default {
       of: [{ type: 'socialLink' }],
       fieldset: 'footerBlock4'
     },
+    /*
     {
       title: 'Payment Methods Title',
       name: 'paymentTitle',
       type: 'string',
       fieldset: 'footerPayments'
     },
+    */
     {
       title: 'Payment Methods',
       name: 'paymentMethods',
