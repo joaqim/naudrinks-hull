@@ -14,6 +14,17 @@ export default {
       type: 'complexPortableText'
     },
     {
+      title: 'Force Text Color ( Default:  Black/White depending on Browser dark mode.)',
+      name: 'textVariant',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'White', value: 'white' },
+          { title: 'Black', value: 'black' }
+        ]
+      },
+    },
+    {
       title: 'Background Type',
       name: 'bgType',
       type: 'string',

@@ -1,11 +1,13 @@
 import React from 'react'
 import BlockContent from '@sanity/block-content-to-react'
 import { serializers } from '@lib/serializers'
+import cx from 'classnames'
 
 import VideoLoop from '@components/video-loop'
 import Photo from '@components/photo'
 
 import { Hero as HeroData } from '@compiled/schema'
+
 
 export interface HeroProps {
   data: HeroData
@@ -17,7 +19,15 @@ interface ILink {
 }
 
 const Hero = ({ data }: HeroProps) => {
-  const { content, bgType, photos, video } = data;
+  const { content, bgType, photos, video, textVariant = 'pageText' } = data;
+  //const bgVariant = textVariant === 'white' ? 'black' : 'white';
+  var bgVariant = 'pageBG';
+  switch(textVariant) {
+    case 'black':
+      bgVariant = 'white';
+    case 'white':
+      bgVariant = 'black'
+  }
 
   return (
     <section className="hero">
@@ -26,7 +36,9 @@ const Hero = ({ data }: HeroProps) => {
           <div className="hero--content">
             <BlockContent
               renderContainerOnSingleChild
-              className="rc"
+              // className={`rc bg-pageBG rounded-lg bg-opacity-70 py-4 max-w-prose mx-auto text-${textVariant}`}
+               // className={`rc bg-darkGray bg-transparent bg-opacity-60 py-4 max-w-prose mx-auto text-${textVariant}`}
+               className={`rc bg-${bgVariant} bg-transparent bg-opacity-60 rounded-md p-6 max-w-prose mx-auto text-${textVariant}`}
               blocks={content}
               serializers={serializers}
             />

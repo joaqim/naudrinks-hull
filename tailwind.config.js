@@ -42,8 +42,9 @@ module.exports = {
         /^xl:self-/,
 
         /^max-w-/,
-        /^text-/,
         /^rounded-/,
+        /^text-/,
+        /^bg-/,
       ],
     },
   },

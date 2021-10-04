@@ -759,13 +759,6 @@ export interface FooterSettings extends SanityDocument {
   social?: Array<SanityKeyed<SocialLink>>;
 
   /**
-   * Payment Methods Title — `string`
-   *
-   *
-   */
-  paymentTitle?: string;
-
-  /**
    * Payment Methods — `array`
    *
    *
@@ -1360,6 +1353,13 @@ export type Hero = {
    *
    */
   content?: ComplexPortableText;
+
+  /**
+   * Force Text Color ( Default:  Black/White depending on Browser dark mode.) — `string`
+   *
+   *
+   */
+  textVariant?: "white" | "black";
 
   /**
    * Background Type — `string`

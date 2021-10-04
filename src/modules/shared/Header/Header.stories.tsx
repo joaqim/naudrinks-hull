@@ -41,7 +41,6 @@ Default.args = {
   data: {
     menuDesktopLeft: {
       items: [
-          // {dropdownItems: [], title: "1"}
         {
           _key: 'aa457bcd2c41',
           _type: 'navPage',
@@ -204,7 +203,7 @@ Default.args = {
   },
 }
 
-export const WithBackground: Story<HeaderProps> = (args) => <Header {...args} />
+export const WithBackground: Story<HeaderProps> = (args) => <div className='bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500'><Header {...args} /></div>
 WithBackground.args = {
   ...Default.args,
   classes: 'bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500',
