@@ -18,7 +18,8 @@ a[href='#content'].skip-link {
   }
 
   &--inner {
-    @apply relative z-20 p-1 sm:p-4 bg-pageBG;
+    /* @apply relative z-20 p-1 sm:p-4 bg-pageBG; */
+    @apply relative z-20 bg-pageBG;
 
     .is-overlay & {
       @apply bg-transparent transition-colors duration-300;
@@ -62,14 +63,15 @@ a[href='#content'].skip-link {
 }
 
 .logo {
-  /* @apply flex flex-col relative z-10; */
-  @apply z-10;
+  @apply flex flex-col relative z-10;
+  /* @apply z-10; */
 
   &--link {
     /* @apply block p-2; */
+    @apply block;
 
     svg {
-      @apply h-14 sm:h-20;
+      @apply h-16 sm:h-20 sm:ml-36;
     }
   }
 }
@@ -164,18 +166,22 @@ a[href='#content'].skip-link {
 
 .main-navigation {
   &--desktop {
-    @apply hidden sm:flex justify-between items-center absolute inset-0;
+    @apply hidden sm:flex justify-between items-center absolute inset-4;
 
     .menu-left,
     .menu-right {
       @apply flex items-center;
     }
 
+    .menu-left {
+      max-width: 60%;
+    }
+
     ul {
       @apply flex;
 
       li {
-        @apply mx-2;
+        @apply mx-1;
       }
 
       button {
@@ -185,7 +191,7 @@ a[href='#content'].skip-link {
 
       a,
       button {
-        @apply block p-2 text-sm leading-normal font-semibold uppercase;
+        @apply block p-1 text-xs leading-normal font-sans uppercase;
       }
     }
   }
