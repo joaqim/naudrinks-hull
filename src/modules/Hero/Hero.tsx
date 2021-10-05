@@ -8,25 +8,28 @@ import Photo from '@components/photo'
 
 import { Hero as HeroData } from '@compiled/schema'
 
-
 export interface HeroProps {
   data: HeroData
 }
 
-interface ILink {
-  url: string
-  icon: string
-}
-
 const Hero = ({ data }: HeroProps) => {
-  const { content, bgType, photos, video, textVariant = 'pageText' } = data;
+  const { content, bgType, photos, video, theme = '' } = data
   //const bgVariant = textVariant === 'white' ? 'black' : 'white';
-  var bgVariant = 'pageBG';
-  switch(textVariant) {
-    case 'black':
-      bgVariant = 'white';
-    case 'white':
-      bgVariant = 'black'
+  var bgVariant: string
+  var textVariant: string
+
+  switch (theme) {
+    case 'dark':
+      bgVariant = 'lightGrey'
+      textVariant = 'black'
+      break
+    case 'light':
+      bgVariant = 'darkGrey'
+      textVariant = 'white'
+      break
+    default:
+      textVariant = 'pageText'
+      bgVariant = 'darkGrey'
   }
 
   return (
@@ -36,9 +39,7 @@ const Hero = ({ data }: HeroProps) => {
           <div className="hero--content">
             <BlockContent
               renderContainerOnSingleChild
-              // className={`rc bg-pageBG rounded-lg bg-opacity-70 py-4 max-w-prose mx-auto text-${textVariant}`}
-               // className={`rc bg-darkGray bg-transparent bg-opacity-60 py-4 max-w-prose mx-auto text-${textVariant}`}
-               className={`rc bg-${bgVariant} bg-transparent bg-opacity-60 rounded-md p-6 max-w-prose mx-auto text-${textVariant}`}
+              className={`rc hero--block is-styled ${theme}`}
               blocks={content}
               serializers={serializers}
             />

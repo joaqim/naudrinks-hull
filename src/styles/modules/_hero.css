@@ -25,6 +25,23 @@
   }
 
   &--content {
-    @apply w-full max-w-5xl mx-auto px-4 pt-24 pb-12 text-center text-white;
+    @apply w-full max-w-5xl mx-auto px-4 pt-24 pb-12 text-center;
+
+      }
+
+  &--block {
+    @apply p-4 max-w-prose mx-auto sm:w-auto;
+
+    &.is-styled { 
+      /* @apply bg-darkGray bg-opacity-40 rounded-xl text-lightGray; */
+      @apply bg-pageBG opacity-50 rounded-xl text-pageText;
+      &.dark { 
+        @apply bg-darkGray bg-opacity-50 rounded-xl text-white;
+      }
+      &.light { 
+        @apply bg-lightGray bg-opacity-50 rounded-xl text-black;
+      }
+    }
+
   }
 }

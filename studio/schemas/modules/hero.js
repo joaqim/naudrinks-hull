@@ -14,13 +14,15 @@ export default {
       type: 'complexPortableText'
     },
     {
-      title: 'Force Text Color ( Default:  Black/White depending on Browser dark mode.)',
-      name: 'textVariant',
+      title: 'Color Scheme ( Default:  Depend on browser dark mode.)',
+      name: 'theme',
       type: 'string',
+      initialValue: 'Default',
       options: {
         list: [
-          { title: 'White', value: 'white' },
-          { title: 'Black', value: 'black' }
+          { title: 'Default', value: '' },
+          { title: 'Light', value: 'light' },
+          { title: 'Dark', value: 'dark' }
         ]
       },
     },
